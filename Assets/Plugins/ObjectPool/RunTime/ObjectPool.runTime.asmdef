@@ -1,0 +1,16 @@
+{
+    "name": "ObjectPool.runTime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:eb821d64f9176224da81cbf0b0744ea0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

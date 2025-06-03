@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/moonLib/ObjectPool/Editor/PoolItemUI.uss?fileID=7433441132597879392&amp;guid=5bb4869ff02834d489063199571ff475&amp;type=3#PoolItemUI" />
+    <ui:VisualElement name="PoolItem" class="pool_item" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+        <ui:Label text="Label" name="ItemName" class="title_label" />
+        <ui:Button text="X" name="DeleteBtn" class="delete_btn" />
+    </ui:VisualElement>
+</ui:UXML>
