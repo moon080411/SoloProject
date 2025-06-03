@@ -8,7 +8,10 @@ namespace _01.Script.Fire
         [SerializeField] protected float timer = 150f;
         [SerializeField] protected float maxRangeTime = 300f;
         [SerializeField] protected float maxRange = 10f;
+        [SerializeField] protected float nowRangeSmallPercent = 0.35f;
+        [SerializeField] protected float nowRangeRandomPercent = 0.1f;
         protected float _nowRange;
+        protected float NowRangeSmallPercent => _nowRange * nowRangeSmallPercent;
 
         protected virtual void Update()
         {
