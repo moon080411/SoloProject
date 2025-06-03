@@ -1,7 +1,9 @@
 ﻿using _01.Script.Entities;
 using _01.Script.FSM;
+using _01.Script.Items;
 using _01.Script.SO;
 using Plugins.SerializedFinder.RunTime.Dependencies;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 namespace _01.Script.Players
@@ -14,6 +16,8 @@ namespace _01.Script.Players
 
         private EntityStateMachine _stateMachine;
         
+        public Inventory Inventory { get; private set; }
+        
         
         [Provide]
         public Player ProvidePlayer() => this;
@@ -21,8 +25,8 @@ namespace _01.Script.Players
         protected override void Awake()
         {
             base.Awake();
+            Inventory = GetCompo<Inventory>();
             _stateMachine = new EntityStateMachine(this, states);
-            
         }
 
         
