@@ -846,88 +846,248 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""POV"",
-            ""id"": ""d6174c52-2b02-4290-a1e3-d507016dfab2"",
+            ""name"": ""Inventory"",
+            ""id"": ""ab1bc257-8c9c-408a-b4d5-2de4f5c364b0"",
             ""actions"": [
                 {
-                    ""name"": ""Pointer"",
+                    ""name"": ""Scroll"",
                     ""type"": ""Value"",
-                    ""id"": ""82d0d4b0-6ccb-4416-a682-a2e1c224138b"",
+                    ""id"": ""79335ca0-9e47-476e-8c7a-1cd02010789b"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ZoomIn"",
-                    ""type"": ""Value"",
-                    ""id"": ""0ec456ff-266e-42d2-8ed7-0a7ecaade1ee"",
-                    ""expectedControlType"": ""Delta"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Looked"",
+                    ""name"": ""1"",
                     ""type"": ""Button"",
-                    ""id"": ""b42e6db1-42fa-472b-bad9-0c7208f5b747"",
+                    ""id"": ""8939448a-41a8-43e0-9490-6c7240d375bb"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PointerDelta"",
-                    ""type"": ""Value"",
-                    ""id"": ""e199ffda-5850-4daa-a9ae-9a2e75a934f2"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""2"",
+                    ""type"": ""Button"",
+                    ""id"": ""7dc6a348-fbdc-47e1-be0c-3fc199aaf8ef"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""3"",
+                    ""type"": ""Button"",
+                    ""id"": ""63b037bb-cd57-4a29-94b2-4f8e44b42501"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""4"",
+                    ""type"": ""Button"",
+                    ""id"": ""60f829c1-1d03-4de8-b87c-85a3391e6ad5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""5"",
+                    ""type"": ""Button"",
+                    ""id"": ""3280d05b-abfd-4145-9a2d-a76a3a338ba6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""6"",
+                    ""type"": ""Button"",
+                    ""id"": ""e95f2b34-dcd0-44f7-8d9c-f6e4174901d9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""7"",
+                    ""type"": ""Button"",
+                    ""id"": ""d30c3572-fbb3-446a-952c-23d2266cd404"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""8"",
+                    ""type"": ""Button"",
+                    ""id"": ""231f7266-f529-4100-b34c-0e72a09b53be"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""9"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe57126a-6beb-45aa-b851-3db92ea571ef"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""0"",
+                    ""type"": ""Button"",
+                    ""id"": ""d349bd11-12cd-471b-9bc1-8b85985301b3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Q"",
+                    ""type"": ""Button"",
+                    ""id"": ""797bd7ec-96f6-40ca-8e69-e3a79087a4a7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""804023ea-d193-4acf-845d-aebaafc152ba"",
-                    ""path"": ""<Pointer>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pointer"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3c9a5b03-38f6-4db3-8fcf-c893720347d8"",
+                    ""id"": ""6adcf683-5e4f-447a-9bfb-cf7fe9f9ef92"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ZoomIn"",
+                    ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""38144278-93d2-4aa6-8ce8-181a4100bbf7"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""id"": ""392f7d98-9050-42d7-9e09-8651273d0f61"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Looked"",
+                    ""action"": ""1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""72ea7df3-c649-4648-9e82-3c57b77b39ae"",
-                    ""path"": ""<Pointer>/delta"",
+                    ""id"": ""d78fbf3c-7477-437c-823b-6e7560b6687f"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PointerDelta"",
+                    ""action"": ""2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0d07869-0184-4fe9-a6f7-c1d044b90c6e"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07f8a3df-dce7-4b1f-8784-86d49aa88893"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e718248-dceb-47f2-9281-501acbf4d224"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60e095da-a78e-45fa-a0d5-846b579128af"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f245a84-fba6-4459-bcd6-6bd74b1a4be0"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02a54f81-d18a-458d-a9ab-540f9d087856"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96f3fe5b-2c8b-4f34-bb93-634eefc68a80"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""9"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""849c2b47-d214-42b3-a4c2-72540b827286"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""0"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9f04c39-8022-4c3e-b5a1-cba08695a415"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Q"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1015,19 +1175,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
-        // POV
-        m_POV = asset.FindActionMap("POV", throwIfNotFound: true);
-        m_POV_Pointer = m_POV.FindAction("Pointer", throwIfNotFound: true);
-        m_POV_ZoomIn = m_POV.FindAction("ZoomIn", throwIfNotFound: true);
-        m_POV_Looked = m_POV.FindAction("Looked", throwIfNotFound: true);
-        m_POV_PointerDelta = m_POV.FindAction("PointerDelta", throwIfNotFound: true);
+        // Inventory
+        m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
+        m_Inventory_Scroll = m_Inventory.FindAction("Scroll", throwIfNotFound: true);
+        m_Inventory__1 = m_Inventory.FindAction("1", throwIfNotFound: true);
+        m_Inventory__2 = m_Inventory.FindAction("2", throwIfNotFound: true);
+        m_Inventory__3 = m_Inventory.FindAction("3", throwIfNotFound: true);
+        m_Inventory__4 = m_Inventory.FindAction("4", throwIfNotFound: true);
+        m_Inventory__5 = m_Inventory.FindAction("5", throwIfNotFound: true);
+        m_Inventory__6 = m_Inventory.FindAction("6", throwIfNotFound: true);
+        m_Inventory__7 = m_Inventory.FindAction("7", throwIfNotFound: true);
+        m_Inventory__8 = m_Inventory.FindAction("8", throwIfNotFound: true);
+        m_Inventory__9 = m_Inventory.FindAction("9", throwIfNotFound: true);
+        m_Inventory__0 = m_Inventory.FindAction("0", throwIfNotFound: true);
+        m_Inventory_Q = m_Inventory.FindAction("Q", throwIfNotFound: true);
     }
 
     ~@Controls()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, Controls.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, Controls.UI.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_POV.enabled, "This will cause a leak and performance issues, Controls.POV.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Inventory.enabled, "This will cause a leak and performance issues, Controls.Inventory.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1424,44 +1592,84 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     /// </summary>
     public UIActions @UI => new UIActions(this);
 
-    // POV
-    private readonly InputActionMap m_POV;
-    private List<IPOVActions> m_POVActionsCallbackInterfaces = new List<IPOVActions>();
-    private readonly InputAction m_POV_Pointer;
-    private readonly InputAction m_POV_ZoomIn;
-    private readonly InputAction m_POV_Looked;
-    private readonly InputAction m_POV_PointerDelta;
+    // Inventory
+    private readonly InputActionMap m_Inventory;
+    private List<IInventoryActions> m_InventoryActionsCallbackInterfaces = new List<IInventoryActions>();
+    private readonly InputAction m_Inventory_Scroll;
+    private readonly InputAction m_Inventory__1;
+    private readonly InputAction m_Inventory__2;
+    private readonly InputAction m_Inventory__3;
+    private readonly InputAction m_Inventory__4;
+    private readonly InputAction m_Inventory__5;
+    private readonly InputAction m_Inventory__6;
+    private readonly InputAction m_Inventory__7;
+    private readonly InputAction m_Inventory__8;
+    private readonly InputAction m_Inventory__9;
+    private readonly InputAction m_Inventory__0;
+    private readonly InputAction m_Inventory_Q;
     /// <summary>
-    /// Provides access to input actions defined in input action map "POV".
+    /// Provides access to input actions defined in input action map "Inventory".
     /// </summary>
-    public struct POVActions
+    public struct InventoryActions
     {
         private @Controls m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public POVActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InventoryActions(@Controls wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "POV/Pointer".
+        /// Provides access to the underlying input action "Inventory/Scroll".
         /// </summary>
-        public InputAction @Pointer => m_Wrapper.m_POV_Pointer;
+        public InputAction @Scroll => m_Wrapper.m_Inventory_Scroll;
         /// <summary>
-        /// Provides access to the underlying input action "POV/ZoomIn".
+        /// Provides access to the underlying input action "Inventory/_1".
         /// </summary>
-        public InputAction @ZoomIn => m_Wrapper.m_POV_ZoomIn;
+        public InputAction @_1 => m_Wrapper.m_Inventory__1;
         /// <summary>
-        /// Provides access to the underlying input action "POV/Looked".
+        /// Provides access to the underlying input action "Inventory/_2".
         /// </summary>
-        public InputAction @Looked => m_Wrapper.m_POV_Looked;
+        public InputAction @_2 => m_Wrapper.m_Inventory__2;
         /// <summary>
-        /// Provides access to the underlying input action "POV/PointerDelta".
+        /// Provides access to the underlying input action "Inventory/_3".
         /// </summary>
-        public InputAction @PointerDelta => m_Wrapper.m_POV_PointerDelta;
+        public InputAction @_3 => m_Wrapper.m_Inventory__3;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/_4".
+        /// </summary>
+        public InputAction @_4 => m_Wrapper.m_Inventory__4;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/_5".
+        /// </summary>
+        public InputAction @_5 => m_Wrapper.m_Inventory__5;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/_6".
+        /// </summary>
+        public InputAction @_6 => m_Wrapper.m_Inventory__6;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/_7".
+        /// </summary>
+        public InputAction @_7 => m_Wrapper.m_Inventory__7;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/_8".
+        /// </summary>
+        public InputAction @_8 => m_Wrapper.m_Inventory__8;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/_9".
+        /// </summary>
+        public InputAction @_9 => m_Wrapper.m_Inventory__9;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/_0".
+        /// </summary>
+        public InputAction @_0 => m_Wrapper.m_Inventory__0;
+        /// <summary>
+        /// Provides access to the underlying input action "Inventory/Q".
+        /// </summary>
+        public InputAction @Q => m_Wrapper.m_Inventory_Q;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_POV; }
+        public InputActionMap Get() { return m_Wrapper.m_Inventory; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -1469,9 +1677,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="POVActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="InventoryActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(POVActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(InventoryActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -1479,23 +1687,47 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="POVActions" />
-        public void AddCallbacks(IPOVActions instance)
+        /// <seealso cref="InventoryActions" />
+        public void AddCallbacks(IInventoryActions instance)
         {
-            if (instance == null || m_Wrapper.m_POVActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_POVActionsCallbackInterfaces.Add(instance);
-            @Pointer.started += instance.OnPointer;
-            @Pointer.performed += instance.OnPointer;
-            @Pointer.canceled += instance.OnPointer;
-            @ZoomIn.started += instance.OnZoomIn;
-            @ZoomIn.performed += instance.OnZoomIn;
-            @ZoomIn.canceled += instance.OnZoomIn;
-            @Looked.started += instance.OnLooked;
-            @Looked.performed += instance.OnLooked;
-            @Looked.canceled += instance.OnLooked;
-            @PointerDelta.started += instance.OnPointerDelta;
-            @PointerDelta.performed += instance.OnPointerDelta;
-            @PointerDelta.canceled += instance.OnPointerDelta;
+            if (instance == null || m_Wrapper.m_InventoryActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InventoryActionsCallbackInterfaces.Add(instance);
+            @Scroll.started += instance.OnScroll;
+            @Scroll.performed += instance.OnScroll;
+            @Scroll.canceled += instance.OnScroll;
+            @_1.started += instance.On_1;
+            @_1.performed += instance.On_1;
+            @_1.canceled += instance.On_1;
+            @_2.started += instance.On_2;
+            @_2.performed += instance.On_2;
+            @_2.canceled += instance.On_2;
+            @_3.started += instance.On_3;
+            @_3.performed += instance.On_3;
+            @_3.canceled += instance.On_3;
+            @_4.started += instance.On_4;
+            @_4.performed += instance.On_4;
+            @_4.canceled += instance.On_4;
+            @_5.started += instance.On_5;
+            @_5.performed += instance.On_5;
+            @_5.canceled += instance.On_5;
+            @_6.started += instance.On_6;
+            @_6.performed += instance.On_6;
+            @_6.canceled += instance.On_6;
+            @_7.started += instance.On_7;
+            @_7.performed += instance.On_7;
+            @_7.canceled += instance.On_7;
+            @_8.started += instance.On_8;
+            @_8.performed += instance.On_8;
+            @_8.canceled += instance.On_8;
+            @_9.started += instance.On_9;
+            @_9.performed += instance.On_9;
+            @_9.canceled += instance.On_9;
+            @_0.started += instance.On_0;
+            @_0.performed += instance.On_0;
+            @_0.canceled += instance.On_0;
+            @Q.started += instance.OnQ;
+            @Q.performed += instance.OnQ;
+            @Q.canceled += instance.OnQ;
         }
 
         /// <summary>
@@ -1504,30 +1736,54 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="POVActions" />
-        private void UnregisterCallbacks(IPOVActions instance)
+        /// <seealso cref="InventoryActions" />
+        private void UnregisterCallbacks(IInventoryActions instance)
         {
-            @Pointer.started -= instance.OnPointer;
-            @Pointer.performed -= instance.OnPointer;
-            @Pointer.canceled -= instance.OnPointer;
-            @ZoomIn.started -= instance.OnZoomIn;
-            @ZoomIn.performed -= instance.OnZoomIn;
-            @ZoomIn.canceled -= instance.OnZoomIn;
-            @Looked.started -= instance.OnLooked;
-            @Looked.performed -= instance.OnLooked;
-            @Looked.canceled -= instance.OnLooked;
-            @PointerDelta.started -= instance.OnPointerDelta;
-            @PointerDelta.performed -= instance.OnPointerDelta;
-            @PointerDelta.canceled -= instance.OnPointerDelta;
+            @Scroll.started -= instance.OnScroll;
+            @Scroll.performed -= instance.OnScroll;
+            @Scroll.canceled -= instance.OnScroll;
+            @_1.started -= instance.On_1;
+            @_1.performed -= instance.On_1;
+            @_1.canceled -= instance.On_1;
+            @_2.started -= instance.On_2;
+            @_2.performed -= instance.On_2;
+            @_2.canceled -= instance.On_2;
+            @_3.started -= instance.On_3;
+            @_3.performed -= instance.On_3;
+            @_3.canceled -= instance.On_3;
+            @_4.started -= instance.On_4;
+            @_4.performed -= instance.On_4;
+            @_4.canceled -= instance.On_4;
+            @_5.started -= instance.On_5;
+            @_5.performed -= instance.On_5;
+            @_5.canceled -= instance.On_5;
+            @_6.started -= instance.On_6;
+            @_6.performed -= instance.On_6;
+            @_6.canceled -= instance.On_6;
+            @_7.started -= instance.On_7;
+            @_7.performed -= instance.On_7;
+            @_7.canceled -= instance.On_7;
+            @_8.started -= instance.On_8;
+            @_8.performed -= instance.On_8;
+            @_8.canceled -= instance.On_8;
+            @_9.started -= instance.On_9;
+            @_9.performed -= instance.On_9;
+            @_9.canceled -= instance.On_9;
+            @_0.started -= instance.On_0;
+            @_0.performed -= instance.On_0;
+            @_0.canceled -= instance.On_0;
+            @Q.started -= instance.OnQ;
+            @Q.performed -= instance.OnQ;
+            @Q.canceled -= instance.OnQ;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="POVActions.UnregisterCallbacks(IPOVActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="InventoryActions.UnregisterCallbacks(IInventoryActions)" />.
         /// </summary>
-        /// <seealso cref="POVActions.UnregisterCallbacks(IPOVActions)" />
-        public void RemoveCallbacks(IPOVActions instance)
+        /// <seealso cref="InventoryActions.UnregisterCallbacks(IInventoryActions)" />
+        public void RemoveCallbacks(IInventoryActions instance)
         {
-            if (m_Wrapper.m_POVActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_InventoryActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -1537,21 +1793,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="POVActions.AddCallbacks(IPOVActions)" />
-        /// <seealso cref="POVActions.RemoveCallbacks(IPOVActions)" />
-        /// <seealso cref="POVActions.UnregisterCallbacks(IPOVActions)" />
-        public void SetCallbacks(IPOVActions instance)
+        /// <seealso cref="InventoryActions.AddCallbacks(IInventoryActions)" />
+        /// <seealso cref="InventoryActions.RemoveCallbacks(IInventoryActions)" />
+        /// <seealso cref="InventoryActions.UnregisterCallbacks(IInventoryActions)" />
+        public void SetCallbacks(IInventoryActions instance)
         {
-            foreach (var item in m_Wrapper.m_POVActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_InventoryActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_POVActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_InventoryActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="POVActions" /> instance referencing this action map.
+    /// Provides a new <see cref="InventoryActions" /> instance referencing this action map.
     /// </summary>
-    public POVActions @POV => new POVActions(this);
+    public InventoryActions @Inventory => new InventoryActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1732,39 +1988,95 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "POV" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Inventory" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="POVActions.AddCallbacks(IPOVActions)" />
-    /// <seealso cref="POVActions.RemoveCallbacks(IPOVActions)" />
-    public interface IPOVActions
+    /// <seealso cref="InventoryActions.AddCallbacks(IInventoryActions)" />
+    /// <seealso cref="InventoryActions.RemoveCallbacks(IInventoryActions)" />
+    public interface IInventoryActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Pointer" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Scroll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPointer(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ZoomIn" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnZoomIn(InputAction.CallbackContext context);
+        void On_1(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Looked" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLooked(InputAction.CallbackContext context);
+        void On_2(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "PointerDelta" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPointerDelta(InputAction.CallbackContext context);
+        void On_3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_4(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_5(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "6" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_6(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "7" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_7(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "8" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_8(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "9" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_9(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "0" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void On_0(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Q" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnQ(InputAction.CallbackContext context);
     }
 }
