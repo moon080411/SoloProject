@@ -7,6 +7,7 @@ using _01.Script.SO;
 using Plugins.SerializedFinder.RunTime.Finder;
 using UnityEngine;
 using System.Linq;
+using _01.Script.Fires;
 using _01.Script.SO.Item;
 using Unity.VisualScripting;
 
@@ -22,6 +23,7 @@ namespace _01.Script.Players
         [SerializeField] private ScriptFinderSO uiManagerFinder;
         [SerializeField] private InventoryInputSO inventoryInput;
         [SerializeField] private ItemCategoryListSO itemCategoryList;
+        [SerializeField] private Transform handTrans;
 
         public int InventoryPoint { get; private set; } = 0;
         
@@ -54,11 +56,28 @@ namespace _01.Script.Players
         
         public bool NowCheckItemCategory(string category)
         {
+            if(_items[InventoryPoint] == null)
+                return false;
             return CheckItemCategory(category, _items[InventoryPoint].ItemSo);
+        }
+        
+        public Item GetItem(int point)
+        {
+            if (point < 0 || point >= _maxCapacity || _items[point] == null)
+                return null;
+            return _items[point];
+        }
+
+        public Item GetCurrentItem()
+        {
+            if (_items[InventoryPoint] == null)
+                return null;
+            return _items[InventoryPoint];
         }
 
         private void ChangePoint(float plus)
         {
+            TorchSet(false);
             int nowPlus;
             nowPlus = Mathf.Clamp(Mathf.RoundToInt(plus), -1, 1);
             InventoryPoint = (InventoryPoint + nowPlus) % _maxCapacity;
@@ -66,29 +85,58 @@ namespace _01.Script.Players
             {
                 InventoryPoint += _maxCapacity;
             }
-            
-            if (NowCheckItemCategory("TORCH"))
-            {
-                
-            }
+            TorchSet(true);
                 
             OnInventoryPointChanged?.Invoke();
+        }
+        public void SetPoint(int point)
+        {
+            if (point < _maxCapacity && point >= 0)
+            {
+                TorchSet(false);
+                InventoryPoint = point;
+                OnInventoryPointChanged?.Invoke();
+                TorchSet(true);
+            }
+        }
+
+        private void TorchSet(bool isActive)
+        {
+            if(!NowCheckItemCategory("TORCH"))
+                return;
+            _items[InventoryPoint].gameObject.SetActive(isActive);
+            if (isActive)
+            {
+                SetTransformToHand(_items[InventoryPoint].transform);
+            }
+            else
+            {
+                _items[InventoryPoint].GetComponent<Torch>().LightRemove();
+                RemoveTransformToHand(_items[InventoryPoint].transform);
+            }
         }
 
         public void DestroyedItem(int point)
         {
+            if(_items[point] == null || point >= _maxCapacity || point < 0)
+                return;
+            Destroy(_items[point].gameObject);
             _items[point] = null;
             uiManagerFinder.GetTarget<UIManager>().DropItemIcon(point);
         }
 
-        private void SetPoint(int point)
+        private void SetTransformToHand(Transform trans)
         {
-            if (point < _maxCapacity)
-            {
-                InventoryPoint = point;
-                OnInventoryPointChanged?.Invoke();
-            }
+            trans.parent = handTrans;
+            trans.localPosition = Vector3.zero;
+            trans.localRotation = Quaternion.identity;
         }
+
+        private void RemoveTransformToHand(Transform trans)
+        {
+            trans.parent = null;
+        }
+
         
         public void AddMaxCapacity(int amount)
         {
@@ -123,6 +171,7 @@ namespace _01.Script.Players
                 item.gameObject.SetActive(true);
                 item.GetOutOfInventory(_entity.transform);
                 uiManagerFinder.GetTarget<UIManager>().DropItemIcon(InventoryPoint);
+                item.GetComponent<Collider>().isTrigger = false;
                 if (!item.GetComponent<Rigidbody>())
                 {
                     item.SetRigidbody();
@@ -135,6 +184,12 @@ namespace _01.Script.Players
             int filledCount = _items.Count(item => item != null);
             if (filledCount >= _maxCapacity)
                 return;
+            Rigidbody rb = item.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Destroy(rb);
+            }
+            item.GetComponent<Collider>().isTrigger = true;
             if (_items[InventoryPoint] == null)
             {
                 _items[InventoryPoint] = item;
@@ -150,6 +205,23 @@ namespace _01.Script.Players
                 }
             }
             item.gameObject.SetActive(false);
+            if (NowCheckItemCategory("TORCH"))
+            {
+                _items[InventoryPoint].gameObject.SetActive(true);
+                SetTransformToHand(_items[InventoryPoint].transform);
+            }
+        }
+
+        public int FindItemIndex(Item item)
+        {
+            for (int i = 0; i < _items.Count; i++)
+            {
+                if (_items[i] != null && _items[i] == item)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

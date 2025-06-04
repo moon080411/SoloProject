@@ -1,16 +1,14 @@
-using System;
 using System.Collections.Generic;
 using _01.Script.Items;
 using _01.Script.Players;
 using _01.Script.Pooling;
 using _01.Script.SO.Item;
-using Plugins.SerializedFinder.RunTime.Dependencies;
 using Plugins.SerializedFinder.RunTime.Finder;
 using UnityEngine;
 
 namespace _01.Script.Manager
 {
-    public class UIManager : MonoBehaviour , IDependencyProvider
+    public class UIManager : MonoBehaviour
     {
         
         [SerializeField] private ScriptFinderSO playerFinder;
@@ -39,7 +37,7 @@ namespace _01.Script.Manager
         
         private void Start()
         {
-            _inventory = playerFinder.GetTarget<Player>().Inventory;
+            _inventory = playerFinder.GetTarget<Player>().ScInventory;
             
             SpawnBag(_inventory.MaxCapacity);
             
@@ -89,8 +87,6 @@ namespace _01.Script.Manager
             _items[where].SetImage(nullImage);
         }
 
-        [Provide]
-        public UIManager ProvideUIManager() => this;
         
 
         public void ShowItemTooltip(Item item)

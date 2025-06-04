@@ -22,5 +22,10 @@ namespace Plugins.SerializedFinder.RunTime.Finder
             Debug.LogError($"TypeScriptFinderSO: The assigned target is not of type {{typeof(T).Name}}.");
             return null;
         }
+
+        public Transform GetTargetTransform()
+        {
+            return _target.transform;
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _01.Script.Items
 {
-    public class Item : MonoBehaviour
+    public class Item : MonoBehaviour,IActionable
     {
         [field:SerializeField] public ItemSO ItemSo { get; private set; }
         [SerializeField] private ScriptFinderSO uiManagerFinder;
@@ -19,11 +19,6 @@ namespace _01.Script.Items
             //uiManagerFinder.GetTarget<UIManager>().ShowItemTooltip(this);
         }
 
-        private void OnMouseDown()
-        {
-            resourceManagerFinder.GetTarget<ResourceManager>().AddItemToInventory(this);
-        }
-
         private void OnMouseExit()
         {
             //uiManagerFinder.GetTarget<UIManager>().HideItemTooltip(this);
@@ -31,6 +26,7 @@ namespace _01.Script.Items
 
         public void GetOutOfInventory(Transform entity)
         {
+            transform.parent = null;
             transform.position = entity.position + Vector3.Scale(transform.localScale * 0.75f , entity.forward);
             transform.position = new Vector3(transform.position.x, transform.position.y + 0.75f , transform.position.z);
             //transform.rotation = entity.rotation;
@@ -40,9 +36,18 @@ namespace _01.Script.Items
         {
             Rigidbody rb = transform.AddComponent<Rigidbody>();
             rb.mass = ItemSo.Mass;
-            rb.freezeRotation = true;
             rb.linearDamping = 15;
             rb.angularDamping = 15;
+        }
+
+        public void Action()
+        {
+            resourceManagerFinder.GetTarget<ResourceManager>().AddItemToInventory(this);
+        }
+
+        public void ItemAction(Item item)
+        {
+            
         }
     }
 }

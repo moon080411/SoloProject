@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _01.Script.SO.Item
 {
-    [CreateAssetMenu(fileName = "ItemList", menuName = "SO/ItemList", order = 0)]
+    [CreateAssetMenu(fileName = "ItemList", menuName = "SO/Items/ItemList", order = 0)]
     public class ItemListSO : ScriptableObject
     {
         [field: SerializeField]

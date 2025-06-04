@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _01.Script.Entities;
+using _01.Script.Fires;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -17,19 +18,21 @@ namespace _01.Script.Players
         [SerializeField] private float timeToDown = 0.1f;
         [SerializeField] private Slider mentalSlider;
         
-        public List<Transform> lights = new List<Transform>();
+        public HashSet<Fire> lights = new HashSet<Fire>();
         
         private float _currentMental = 100f;
         
-        [SerializeField]private bool _isSafe = true;
+        private bool _isSafe = true;
 
         private float _timer = 0f;
         
         public UnityEvent GameOver;
-        
-        
-        
-        
+
+        private void Awake()
+        {
+            CheckLight();
+        }
+
         private void Update()
         {
             _timer += Time.deltaTime;
@@ -74,8 +77,11 @@ namespace _01.Script.Players
         
         public void SetSafe(bool isSafe)
         {
-            _isSafe = isSafe;
-            _timer = 0;
+            if (isSafe != _isSafe)
+            {
+                _isSafe = isSafe;
+                _timer = 0;
+            }
         }
 
         public void CheckMental()
@@ -83,6 +89,7 @@ namespace _01.Script.Players
             if (_currentMental <= 0)
             {
                 GameOver?.Invoke();
+                print("GameOver");
             }
         }
 
@@ -110,6 +117,27 @@ namespace _01.Script.Players
         public void Initialize(Entity entity)
         {
             
+        }
+
+        public void TryAddLight(Fire light)
+        {
+            if (lights.Add(light))
+            {
+                CheckLight();
+            }
+        }
+
+        public void TryRemoveLight(Fire light)
+        {
+            if (lights.Remove(light))
+            {
+                CheckLight();
+            }
+        }
+
+        private void CheckLight()
+        {
+            SetSafe(lights.Count > 0);
         }
     }
 }

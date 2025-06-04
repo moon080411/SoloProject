@@ -23,11 +23,6 @@ namespace _01.Script.Players.States
             _player = entity as Player;
         }
 
-        public override void Enter()
-        {
-            base.Enter();
-        }
-
         protected void JumpStateChange()
         {
             if(_groundChecker.GroundCheck())

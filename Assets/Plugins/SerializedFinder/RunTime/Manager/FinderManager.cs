@@ -1,15 +1,11 @@
 using System;
-using System.Linq;
-using AYellowpaper.SerializedCollections;
-using Codice.CM.Common;
-using Plugins.SerializedFinder.RunTime.Dependencies;
+using System.Collections.Generic;
 using Plugins.SerializedFinder.RunTime.Finder;
-using Plugins.SerializedFinder.RunTime.Serializable;
 using UnityEngine;
 
 namespace Plugins.SerializedFinder.RunTime.Manager
 {
-    [DefaultExecutionOrder(-1)]
+    [DefaultExecutionOrder(-10)]
     public class FinderManager : MonoBehaviour
     {
         [SerializeField] private ScriptFinderSO[] finders;
@@ -25,9 +21,12 @@ namespace Plugins.SerializedFinder.RunTime.Manager
                     Debug.LogWarning($"[FinderManager] Could not find an object in the scene corresponding to the type {finder.KeyType.Type.Name}.");
                     continue;
                 }
-
                 finder.SetTarget(value);
             }
+        }
+        private IEnumerable<MonoBehaviour> GetMonoBehaviours()
+        {
+            return FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
         }
     }
 }

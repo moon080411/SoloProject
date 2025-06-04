@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc0d53c9a644c68b6214aef02e1f474, type: 3}
+  m_Name: ItemCategory
+  m_EditorClassIdentifier: 
+  <Items>k__BackingField:
+    _serializedList:
+    - Key: TORCH
+      Value: {fileID: 11400000, guid: a65f786cee69a044584851a773c66782, type: 2}
+    - Key: WOOD
+      Value: {fileID: 11400000, guid: 2ded69782adf7c3478601ea288814bd0, type: 2}

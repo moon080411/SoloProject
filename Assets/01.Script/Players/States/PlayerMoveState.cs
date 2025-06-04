@@ -9,17 +9,6 @@ namespace _01.Script.Players.States
         {
         }
 
-        public override void Enter()
-        {
-            base.Enter();
-            _player.PlayerInput.OnJumpEvent += JumpStateChange;
-        }
-        public override void Exit()
-        {
-            base.Exit();
-            _player.PlayerInput.OnJumpEvent -= JumpStateChange;
-        }
-
         public override void Update()
         {
             base.Update();
