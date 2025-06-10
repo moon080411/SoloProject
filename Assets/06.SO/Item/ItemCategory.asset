@@ -16,5 +16,7 @@ MonoBehaviour:
     _serializedList:
     - Key: TORCH
       Value: {fileID: 11400000, guid: a65f786cee69a044584851a773c66782, type: 2}
+    - Key: UPGRADE
+      Value: {fileID: 11400000, guid: 87d65c23cb4882d4b81f8077203da6d6, type: 2}
     - Key: WOOD
       Value: {fileID: 11400000, guid: 2ded69782adf7c3478601ea288814bd0, type: 2}

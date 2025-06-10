@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea66f1ea5de64868b4df24d75f7b0a6a, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  <ItemName>k__BackingField: Stone
+  <ItemColor>k__BackingField: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  <ItemTooltip>k__BackingField: 
+  <TooltipColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <BackgroundColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <ItemIcon>k__BackingField: {fileID: 0}
+  <Mass>k__BackingField: 1
+  <StringValue>k__BackingField:
+    _serializedList: []
+  <IntValue>k__BackingField:
+    _serializedList: []
+  <FloatValue>k__BackingField:
+    _serializedList: []
+  <BoolValue>k__BackingField:
+    _serializedList: []
