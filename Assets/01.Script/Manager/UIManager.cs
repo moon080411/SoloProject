@@ -31,7 +31,7 @@ namespace _01.Script.Manager
 
         private void Awake()
         {
-            //_pool = new Pool(tooltipPrefab, itemTooltipParent);
+            _pool = new Pool(tooltipPrefab, itemTooltipParent);
             
         }
         
@@ -89,10 +89,11 @@ namespace _01.Script.Manager
 
         
 
-        public void ShowItemTooltip(Item item)
+        public Transform ShowItemTooltip(Item item)
         {
             _itemTooltips.Add(item, _pool.Pop());
             _itemTooltips[item].GetComponent<ItemTooltip>().SetTooltip(item.ItemSo);
+            return _itemTooltips[item];
         }
         
         public void HideItemTooltip(Item item)

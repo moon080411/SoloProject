@@ -77,32 +77,36 @@ namespace _01.Script.Players
 
         private void ChangePoint(float plus)
         {
-            TorchSet(false);
             int nowPlus;
             nowPlus = Mathf.Clamp(Mathf.RoundToInt(plus), -1, 1);
+            if (nowPlus == 0)
+                return;
+            ItemSet(false);
             InventoryPoint = (InventoryPoint + nowPlus) % _maxCapacity;
             if (InventoryPoint < 0)
             {
                 InventoryPoint += _maxCapacity;
             }
-            TorchSet(true);
+            ItemSet(true);
                 
             OnInventoryPointChanged?.Invoke();
         }
         public void SetPoint(int point)
         {
-            if (point < _maxCapacity && point >= 0)
+            if(point < 0 || point == InventoryPoint)
+                return;
+            if (point < _maxCapacity)
             {
-                TorchSet(false);
+                ItemSet(false);
                 InventoryPoint = point;
                 OnInventoryPointChanged?.Invoke();
-                TorchSet(true);
+                ItemSet(true);
             }
         }
 
-        private void TorchSet(bool isActive)
+        private void ItemSet(bool isActive)
         {
-            if(!NowCheckItemCategory("TORCH"))
+            if (_items[InventoryPoint] == null)
                 return;
             _items[InventoryPoint].gameObject.SetActive(isActive);
             if (isActive)
@@ -111,14 +115,18 @@ namespace _01.Script.Players
             }
             else
             {
-                _items[InventoryPoint].GetComponent<Torch>().LightRemove();
+                if (NowCheckItemCategory("TORCH"))
+                {
+                    _items[InventoryPoint].GetComponent<Torch>().LightOff();
+                    _items[InventoryPoint].GetComponent<Torch>().LightRemove();
+                }
                 RemoveTransformToHand(_items[InventoryPoint].transform);
             }
         }
 
         public void DestroyedItem(int point)
         {
-            if(_items[point] == null || point >= _maxCapacity || point < 0)
+            if(!_items[point] || point >= _maxCapacity || point < 0)
                 return;
             Destroy(_items[point].gameObject);
             _items[point] = null;
@@ -182,7 +190,7 @@ namespace _01.Script.Players
         public void AddItem(Item item)
         {
             int filledCount = _items.Count(item => item != null);
-            if (filledCount >= _maxCapacity)
+            if (filledCount >= _maxCapacity || _items.Contains(item))
                 return;
             Rigidbody rb = item.GetComponent<Rigidbody>();
             if (rb != null)
@@ -205,11 +213,8 @@ namespace _01.Script.Players
                 }
             }
             item.gameObject.SetActive(false);
-            if (NowCheckItemCategory("TORCH"))
-            {
-                _items[InventoryPoint].gameObject.SetActive(true);
-                SetTransformToHand(_items[InventoryPoint].transform);
-            }
+            _items[InventoryPoint].gameObject.SetActive(true);
+            SetTransformToHand(_items[InventoryPoint].transform);
         }
 
         public int FindItemIndex(Item item)

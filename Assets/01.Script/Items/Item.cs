@@ -1,17 +1,26 @@
+using System;
+using System.Collections.Generic;
+using _01.Script.Fires;
 using _01.Script.Manager;
 using _01.Script.SO.Item;
 using Plugins.SerializedFinder.RunTime.Finder;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _01.Script.Items
 {
-    public class Item : MonoBehaviour,IActionable
+    public class Item : MonoBehaviour,IActionable , IFireChekable
     {
         [field:SerializeField] public ItemSO ItemSo { get; private set; }
         [SerializeField] private ScriptFinderSO uiManagerFinder;
+        [SerializeField] private ScriptFinderSO fireManagerFinder;
         [SerializeField] private ScriptFinderSO resourceManagerFinder;
         [SerializeField] private int amount = 1;
+        
+        private Transform _itemTooltip;
+        
+        public UnityEvent OnItemAction;
 
         private void OnMouseEnter()
         {
@@ -42,6 +51,9 @@ namespace _01.Script.Items
 
         public void Action()
         {
+            if(!fireManagerFinder.GetTarget<FireManager>().CheckInFire(transform))
+                return;
+            OnItemAction?.Invoke();
             resourceManagerFinder.GetTarget<ResourceManager>().AddItemToInventory(this);
         }
 

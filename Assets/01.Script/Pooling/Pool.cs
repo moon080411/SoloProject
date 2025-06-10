@@ -27,7 +27,9 @@ namespace _01.Script.Pooling
         {
             if (_pool.Count > 0)
             {
-                return _pool.Pop();
+                GameObject item = _pool.Pop().gameObject;
+                item.SetActive(true);
+                return item.transform;
             }
             else
             {

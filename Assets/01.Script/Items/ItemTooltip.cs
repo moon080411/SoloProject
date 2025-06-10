@@ -11,7 +11,6 @@ namespace _01.Script.Items
         [field:SerializeField] public TextMeshProUGUI NameText { get; private set; }
         [field:SerializeField] public TextMeshProUGUI TooltipText { get; private set; }
         [field: SerializeField] public Image BackgroundImage { get; private set; }
-        [field: SerializeField] public Image TooltipIcon { get; private set; }
 
         public void SetTooltip(ItemSO item)
         {
@@ -19,7 +18,6 @@ namespace _01.Script.Items
             NameText.color = item.ItemColor;
             TooltipText.text = item.ItemTooltip;
             TooltipText.color = item.TooltipColor;
-            TooltipIcon.sprite = item.ItemIcon;
             BackgroundImage.color = item.BackgroundColor;
         }
     }
