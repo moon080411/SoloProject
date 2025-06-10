@@ -34,10 +34,5 @@ namespace _01.Script.Fires
                 base.TimerEnd();
             }
         }
-
-        public void LightRemove()
-        {
-            _player.ScMental.TryRemoveLight(this);
-        }
     }
 }
