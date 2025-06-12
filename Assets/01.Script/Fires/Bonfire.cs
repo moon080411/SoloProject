@@ -13,15 +13,17 @@ namespace _01.Script.Fires
         [SerializeField] private GameObject bigBonFire;
         [SerializeField] private GameObject smallBonFire;
         [SerializeField] private GameObject fireGone;
-        [SerializeField] private float BigTime = 100f;
+        [SerializeField] private float bigTime = 100f;
         [SerializeField] private ItemCategoryListSO itemCategoryList;
         [SerializeField] private float torchGiveTime = 60;
         [SerializeField] private GameObject torchPrefab;
         [SerializeField] private TextMeshPro fireText;
         [SerializeField] private List<ItemSO> upgradeItems;
         [SerializeField] private List<int> upgradeCosts;
+        [SerializeField] private List<float> upgradeTimeMax;
+        [SerializeField] private List<float> upgradeMaxRange;
         private Transform _currentBonFire;
-        FireManager fireManager;
+        private FireManager _fireManager;
         private int _upgradeCount = 0;
 
         protected override void Awake()
@@ -30,8 +32,10 @@ namespace _01.Script.Fires
             bigBonFire.SetActive(false);
             smallBonFire.SetActive(false);
             fireGone.SetActive(false);
+            maxRangeTime = upgradeTimeMax[0];
+            maxRange = upgradeMaxRange[0];
             FireText();
-            fireManager = fireManagerFinder.GetTarget<FireManager>();
+            _fireManager = fireManagerFinder.GetTarget<FireManager>();
         }
 
         protected override void Update()
@@ -45,9 +49,9 @@ namespace _01.Script.Fires
                 return;
             }
             base.Update();
-            if (timer >= BigTime && _currentBonFire != bigBonFire.transform)
+            if (timer >= bigTime && _currentBonFire != bigBonFire.transform)
             {
-                fireManager.AddFire(this);
+                _fireManager.AddFire(this);
                 lightSource.enabled = true;
                 fireGone.SetActive(false);
                 smallBonFire.SetActive(false);
@@ -55,9 +59,9 @@ namespace _01.Script.Fires
                 fireText.gameObject.SetActive(true);
                 _currentBonFire = bigBonFire.transform;
             }
-            else if (timer < BigTime && _currentBonFire != smallBonFire.transform)
+            else if (timer < bigTime && _currentBonFire != smallBonFire.transform)
             {
-                fireManager.AddFire(this);
+                _fireManager.AddFire(this);
                 lightSource.enabled = true;
                 fireGone.SetActive(false);
                 bigBonFire.SetActive(false);
@@ -83,13 +87,15 @@ namespace _01.Script.Fires
         
         protected override void TimeCheck()
         {
+            if(timer >= maxRangeTime)
+                timer = maxRangeTime;
             timer -= Time.deltaTime / (_upgradeCount + 1);
         }
 
         protected void LightGone()
         {
             _currentBonFire = fireGone.transform;
-            fireManager.RemoveFire(this);
+            _fireManager.RemoveFire(this);
             smallBonFire.SetActive(false);
             bigBonFire.SetActive(false);
             fireGone.SetActive(true);
@@ -149,6 +155,10 @@ namespace _01.Script.Fires
                         if (upgradeCosts[_upgradeCount] <= 0)
                         {
                             _upgradeCount++;
+                            maxRangeTime = upgradeTimeMax[_upgradeCount];
+                            maxRange = upgradeMaxRange[_upgradeCount];
+                            RangeSet();
+                            LightUP();
                         }
 
                         FireText();
@@ -161,7 +171,14 @@ namespace _01.Script.Fires
                 {
                     return;
                 }
-                timer += item.ItemSo.FloatValue["FIREPOWER"];
+                if (timer + item.ItemSo.FloatValue["FIREPOWER"] >= upgradeTimeMax[_upgradeCount])
+                {
+                    timer = upgradeTimeMax[_upgradeCount];
+                }
+                else
+                {
+                    timer += item.ItemSo.FloatValue["FIREPOWER"];
+                }
                 ItemDestroy(item);
                 LightUP();
             }
@@ -174,13 +191,19 @@ namespace _01.Script.Fires
                     lightSource.enabled = true;
                     LightOn();
                     multiply = 0.5f;
-                    _player.ScMental.AddMental(-25f);
                 }
                 else
                 {
                     LightUP();
                 }
-                timer += item.GetComponent<Torch>().GetTime(item.ItemSo.FloatValue["FIREMULTIPLY"] * multiply);
+                if (timer + item.GetComponent<Torch>().GetTime(item.ItemSo.FloatValue["FIREMULTIPLY"] * multiply) >= upgradeTimeMax[_upgradeCount])
+                {
+                    timer = upgradeTimeMax[_upgradeCount];
+                }
+                else
+                {
+                    timer += item.GetComponent<Torch>().GetTime(item.ItemSo.FloatValue["FIREMULTIPLY"] * multiply);
+                }
                 item.GetComponent<Torch>().LightOff();
                 ItemDestroy(item);
             }

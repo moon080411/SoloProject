@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using _01.Script.Fires;
 using _01.Script.Manager;
 using _01.Script.SO.Item;
-using Plugins.SerializedFinder.RunTime.Finder;
+using Plugins.ScriptFinder.RunTime.Finder;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;

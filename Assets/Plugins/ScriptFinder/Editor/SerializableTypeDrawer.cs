@@ -1,10 +1,10 @@
 #if UNITY_EDITOR
 using System;
-using Plugins.SerializedFinder.RunTime.Serializable;
+using Plugins.ScriptFinder.RunTime.Serializable;
 using UnityEditor;
 using UnityEngine;
 
-namespace Plugins.SerializedFinder.Editor
+namespace Plugins.ScriptFinder.Editor
 {
     [CustomPropertyDrawer(typeof(SerializableType))]
     public class SerializableTypeObjectFieldDrawer : PropertyDrawer
@@ -56,15 +56,20 @@ namespace Plugins.SerializedFinder.Editor
 
         private MonoScript GetMonoScriptFromType(Type type)
         {
+            if (type == null) return null;
+            string typeFullName = type.FullName;
             var guids = AssetDatabase.FindAssets("t:MonoScript");
             foreach (var guid in guids)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 var ms = AssetDatabase.LoadAssetAtPath<MonoScript>(path);
-                if (ms != null && ms.GetClass() == type)
-                    return ms;
+                if (ms != null)
+                {
+                    var msClass = ms.GetClass();
+                    if (msClass?.FullName == typeFullName)
+                        return ms;
+                }
             }
-
             return null;
         }
     }

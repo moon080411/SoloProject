@@ -173,8 +173,8 @@ MonoBehaviour:
   playerFinder: {fileID: 11400000, guid: 2dc4020d2b3478a4fabd7f55a7fc83e0, type: 2}
   fireLightManagerFinder: {fileID: 11400000, guid: e0158c0eba94cd741842a14069185013, type: 2}
   fireManagerFinder: {fileID: 11400000, guid: 9f97dbbe45b8ea4429af0867b9fcfe68, type: 2}
-  timer: 60
-  maxRangeTime: 60
+  timer: 30
+  maxRangeTime: 30
   maxRange: 5.53
   nowRangeSmallPercent: 0.35
   lightSource: {fileID: 2995688395988574714}

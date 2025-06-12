@@ -1,5 +1,5 @@
 using System;
-using Plugins.SerializedFinder.RunTime.Finder;
+using Plugins.ScriptFinder.RunTime.Finder;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Plugins.SerializedFinder.RunTime.Serializable
+namespace Plugins.ScriptFinder.RunTime.Serializable
 {
     [Serializable]
     public class SerializableType : ISerializationCallbackReceiver, IEquatable<SerializableType>
@@ -9,10 +9,20 @@ namespace Plugins.SerializedFinder.RunTime.Serializable
         [SerializeField]
         private string typeName;
 
+        private Type _type;
         public Type Type
         {
-            get => string.IsNullOrEmpty(typeName) ? null : System.Type.GetType(typeName);
-            set => typeName = value?.AssemblyQualifiedName;
+            get
+            {
+                if (_type == null && !string.IsNullOrEmpty(typeName))
+                    _type = Type.GetType(typeName);
+                return _type;
+            }
+            set
+            {
+                _type = value;
+                typeName = value?.AssemblyQualifiedName;
+            }
         }
 
         public SerializableType(Type type)
@@ -30,8 +40,7 @@ namespace Plugins.SerializedFinder.RunTime.Serializable
 
         public void OnAfterDeserialize()
         {
-            if (!string.IsNullOrEmpty(typeName))
-                Type = System.Type.GetType(typeName);
+            _type = null;
         }
 
         public static bool operator ==(SerializableType a, SerializableType b)

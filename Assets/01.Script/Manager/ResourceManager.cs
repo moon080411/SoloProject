@@ -1,7 +1,7 @@
 using _01.Script.Items;
 using _01.Script.Players;
 using _01.Script.Pooling;
-using Plugins.SerializedFinder.RunTime.Finder;
+using Plugins.ScriptFinder.RunTime.Finder;
 using UnityEngine;
 
 namespace _01.Script.Manager

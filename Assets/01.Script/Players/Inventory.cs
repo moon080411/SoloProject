@@ -4,11 +4,11 @@ using _01.Script.Entities;
 using _01.Script.Items;
 using _01.Script.Manager;
 using _01.Script.SO;
-using Plugins.SerializedFinder.RunTime.Finder;
 using UnityEngine;
 using System.Linq;
 using _01.Script.Fires;
 using _01.Script.SO.Item;
+using Plugins.ScriptFinder.RunTime.Finder;
 using Unity.VisualScripting;
 
 namespace _01.Script.Players

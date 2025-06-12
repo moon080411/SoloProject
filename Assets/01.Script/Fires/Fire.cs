@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _01.Script.Manager;
 using _01.Script.Players;
-using Plugins.SerializedFinder.RunTime.Finder;
+using Plugins.ScriptFinder.RunTime.Finder;
 using UnityEngine;
 
 namespace _01.Script.Fires

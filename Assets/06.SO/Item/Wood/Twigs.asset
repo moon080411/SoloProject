@@ -26,6 +26,6 @@ MonoBehaviour:
   <FloatValue>k__BackingField:
     _serializedList:
     - Key: FIREPOWER
-      Value: 25
+      Value: 15
   <BoolValue>k__BackingField:
     _serializedList: []

@@ -363,17 +363,17 @@ MonoBehaviour:
   playerFinder: {fileID: 11400000, guid: 2dc4020d2b3478a4fabd7f55a7fc83e0, type: 2}
   fireLightManagerFinder: {fileID: 11400000, guid: e0158c0eba94cd741842a14069185013, type: 2}
   fireManagerFinder: {fileID: 11400000, guid: 9f97dbbe45b8ea4429af0867b9fcfe68, type: 2}
-  timer: 150
-  maxRangeTime: 300
+  timer: 75
+  maxRangeTime: 150
   maxRange: 10
   nowRangeSmallPercent: 0.25
   lightSource: {fileID: 1232482055507435234}
   bigBonFire: {fileID: 1168596801631284347}
   smallBonFire: {fileID: 2877695026317879122}
   fireGone: {fileID: 5648125223026766573}
-  BigTime: 100
+  bigTime: 100
   itemCategoryList: {fileID: 11400000, guid: 146eda0ba9540e24da322d011d017661, type: 2}
-  torchGiveTime: 60
+  torchGiveTime: 30
   torchPrefab: {fileID: 7668034744248456065, guid: db0267b342ceffa42b95aa16a178c92c, type: 3}
   fireText: {fileID: 7082413765403670625}
   upgradeItems:
@@ -381,6 +381,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d97e26b5f2600084cb5140fe6fb6379a, type: 2}
   - {fileID: 11400000, guid: 244dff139b71c824db0e07a86ad2cff5, type: 2}
   upgradeCosts: 030000000400000003000000
+  upgradeTimeMax:
+  - 125
+  - 145.83
+  - 166.67
+  - 250
+  upgradeMaxRange:
+  - 7.5
+  - 10
+  - 12.5
+  - 25
 --- !u!65 &5731115139272395007
 BoxCollider:
   m_ObjectHideFlags: 0
