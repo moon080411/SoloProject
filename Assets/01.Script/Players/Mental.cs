@@ -89,7 +89,6 @@ namespace _01.Script.Players
             if (_currentMental <= 0)
             {
                 GameOver?.Invoke();
-                print("GameOver");
             }
         }
 
