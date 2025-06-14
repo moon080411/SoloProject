@@ -17,12 +17,15 @@ namespace _01.Script.Players
         
         public Mental ScMental { get; private set; }
         
+        public SnowEffectGenerate ScSnow { get; private set; }
+        
         
         protected override void Awake()
         {
             base.Awake();
             ScInventory = GetCompo<Inventory>();
             ScMental = GetCompo<Mental>();
+            ScSnow = GetCompo<SnowEffectGenerate>();
             _stateMachine = new EntityStateMachine(this, states);
             PlayerInput.OnClickEvent += Click;
         }

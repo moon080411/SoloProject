@@ -228,5 +228,10 @@ namespace _01.Script.Players
             }
             return -1;
         }
+        
+        public bool CheckItemInInventory(Item item)
+        {
+            return _items.Contains(item);
+        }
     }
 }

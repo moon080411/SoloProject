@@ -5,6 +5,7 @@ using _01.Script.Players;
 using _01.Script.Pooling;
 using _01.Script.SO.Item;
 using Plugins.ScriptFinder.RunTime.Finder;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,9 @@ namespace _01.Script.Manager
         [SerializeField] private float tooltipYPlusPos = 20f;
         [SerializeField] private Transform itemTooltipParent;
         [SerializeField] private Transform itemBagParent;
+        [SerializeField] private TextMeshProUGUI fogText;
+        [SerializeField] private TextMeshProUGUI fireText;
+        [SerializeField] private TextMeshProUGUI timeText;
         
         private Item _currentItem;
 
@@ -36,6 +40,8 @@ namespace _01.Script.Manager
         {
             _tooltip = Instantiate(tooltipPrefab, Vector3.zero, Quaternion.identity, itemTooltipParent);
             _tooltip.gameObject.SetActive(false);
+            fogText.gameObject.SetActive(false);
+            fireText.gameObject.SetActive(false);
         }
         
         private void Start()
@@ -113,6 +119,16 @@ namespace _01.Script.Manager
                 return;
             _tooltip.gameObject.SetActive(false);
             _currentItem = null;
+        }
+
+        public void SetFogText(bool b)
+        {
+            fogText.gameObject.SetActive(b);
+        }
+
+        public void FireTextActive(bool b)
+        {
+            fireText.gameObject.SetActive(b);
         }
     }
 }

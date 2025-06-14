@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _01.Script.Items;
 using _01.Script.Manager;
 using _01.Script.SO.Item;
+using Plugins.ScriptFinder.RunTime.Finder;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ namespace _01.Script.Fires
 {
     public class Bonfire : Fire , IActionable , IFireChekable
     {
+        [SerializeField] private ScriptFinderSO uiManagerFinder;
         [SerializeField] private GameObject bigBonFire;
         [SerializeField] private GameObject smallBonFire;
         [SerializeField] private GameObject fireGone;
@@ -26,13 +28,20 @@ namespace _01.Script.Fires
         [SerializeField] private List<float> upgradeMaxRange;
         [SerializeField] private List<float> upgradeTorchGiveTimeMultiply;
         [SerializeField] private Slider fireSlider;
+        [SerializeField] private Sprite fireGoneImage;
+        [SerializeField] private Sprite fireSmallImage;
+        [SerializeField] private Sprite fireBigImage;
+        private Image _fillImage;
+        private Image _handleImage;
         private RectTransform _rectTransform;
         private Coroutine _fireCoroutine;
         private Coroutine _colorCoroutine;
+        private Coroutine _sliderCoroutine;
         private float _torchGiveTimeMultiply = 1f;
         private Transform _currentBonFire;
         private FireManager _fireManager;
         private int _upgradeCount = 0;
+        private UIManager _uiManager;
 
         protected override void Awake()
         {
@@ -42,14 +51,19 @@ namespace _01.Script.Fires
             fireGone.SetActive(false);
             maxRangeTime = upgradeTimeMax[0];
             maxRange = upgradeMaxRange[0];
+            bigTime = upgradeTimeMax[0] * 0.65f;
             _torchGiveTimeMultiply = upgradeTorchGiveTimeMultiply[0];
             FireText();
             _fireManager = fireManagerFinder.GetTarget<FireManager>();
+            _uiManager = uiManagerFinder.GetTarget<UIManager>();
             _rectTransform = fireSlider.GetComponent<RectTransform>();
+            _fillImage = fireSlider.fillRect.GetComponent<Image>();
+            _handleImage = fireSlider.handleRect.GetComponent<Image>();
         }
 
         protected override void Update()
         {
+            FireSliderSet();
             if (timer <= 0f)
             {
                 if (_currentBonFire != fireGone.transform)
@@ -68,6 +82,7 @@ namespace _01.Script.Fires
                 bigBonFire.SetActive(true);
                 fireText.gameObject.SetActive(true);
                 _currentBonFire = bigBonFire.transform;
+                _handleImage.sprite = fireBigImage;
             }
             else if (timer < bigTime && _currentBonFire != smallBonFire.transform)
             {
@@ -78,11 +93,14 @@ namespace _01.Script.Fires
                 smallBonFire.SetActive(true);
                 fireText.gameObject.SetActive(true);
                 _currentBonFire = smallBonFire.transform;
+                _handleImage.sprite = fireSmallImage;
             }
         }
         
         private void FireSliderSet()
         {
+            if (_sliderCoroutine != null)
+                return;
             if (_currentBonFire == fireGone.transform)
             {
                 fireSlider.value = 0;
@@ -123,6 +141,9 @@ namespace _01.Script.Fires
             fireGone.SetActive(true);
             fireText.gameObject.SetActive(false);
             lightSource.enabled = false;
+            _handleImage.sprite = fireGoneImage;
+            _player.ScMental.SetBornFireSafe(false);
+            _uiManager.FireTextActive(true);
         }
 
         public void Action()
@@ -138,6 +159,25 @@ namespace _01.Script.Fires
         {
             CoroutineCheck(_fireCoroutine);
             _fireCoroutine = StartCoroutine(FireUpgrade());
+        }
+        
+        private void SliderCoroutine()
+        {
+            CoroutineCheck(_sliderCoroutine);
+            _sliderCoroutine = StartCoroutine(SliderUpgrade());
+        }
+
+        private IEnumerator SliderUpgrade()
+        {
+            float time = 0;
+            float baseValue = fireSlider.value;
+            while(time < 1)
+            {
+                time += Time.deltaTime;
+                yield return null;
+                fireSlider.value = Mathf.Lerp(baseValue, timer / maxRangeTime, time);
+            }
+            fireSlider.value = timer / maxRangeTime;
         }
 
         private void CoroutineCheck(Coroutine coroutine)
@@ -173,16 +213,15 @@ namespace _01.Script.Fires
         private IEnumerator ColorChange()
         {
             float time = 0;
-            Color startColor = lightSource.color;
-            Color targetColor = upgradeItems[_upgradeCount].ItemColor;
+            Color startColor = _fillImage.color;
+            Color targetColor = upgradeItems[_upgradeCount - 1].ItemColor;
             while (time < 1f)
             {
                 time += Time.deltaTime;
-                lightSource.color = Color.Lerp(startColor, targetColor, time);
+                _fillImage.color = Color.Lerp(startColor, targetColor, time);
                 yield return null;
             }
-            lightSource.color = targetColor;
-            FireSliderSet();
+            _fillImage.color = targetColor;
         }
 
         public void ItemAction(Item item)
@@ -227,14 +266,7 @@ namespace _01.Script.Fires
                         upgradeCosts[_upgradeCount]--;
                         if (upgradeCosts[_upgradeCount] <= 0)
                         {
-                            _upgradeCount++;
-                            maxRangeTime = upgradeTimeMax[_upgradeCount];
-                            maxRange = upgradeMaxRange[_upgradeCount];
-                            _torchGiveTimeMultiply = upgradeTorchGiveTimeMultiply[_upgradeCount];
-                            ColorCorutine();
-                            FireCoroutine();
-                            RangeSet();
-                            LightUP();
+                            Upgrade();
                         }
 
                         FireText();
@@ -265,7 +297,9 @@ namespace _01.Script.Fires
                 {
                     timer = 0;
                     lightSource.enabled = true;
+                    _player.ScMental.SetBornFireSafe(true);
                     LightOn();
+                    _uiManager.FireTextActive(false);
                     multiply = 0.5f;
                 }
                 else
@@ -283,6 +317,30 @@ namespace _01.Script.Fires
                 item.GetComponent<Torch>().LightOff();
                 ItemDestroy(item);
             }
+        }
+
+        private void Upgrade()
+        {
+            UpgradeValueSet();
+            UpgradeCoroutine();
+        }
+        
+        private void UpgradeValueSet()
+        {
+            _upgradeCount++;
+            maxRangeTime = upgradeTimeMax[_upgradeCount];
+            maxRange = upgradeMaxRange[_upgradeCount];
+            _torchGiveTimeMultiply = upgradeTorchGiveTimeMultiply[_upgradeCount];
+            bigTime = upgradeTimeMax[_upgradeCount] * 0.65f;
+        }
+        
+        private void UpgradeCoroutine()
+        {
+            SliderCoroutine();
+            ColorCorutine();
+            FireCoroutine();
+            RangeSet();
+            LightUP();
         }
 
         

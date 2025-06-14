@@ -15,8 +15,8 @@ namespace _01.Script.Items
         [SerializeField] private ScriptFinderSO uiManagerFinder;
         [SerializeField] private ScriptFinderSO fireManagerFinder;
         [SerializeField] private ScriptFinderSO resourceManagerFinder;
+        [SerializeField] private ScriptFinderSO itemManagerFinder;
         [SerializeField]private Outline _outline;
-        [SerializeField] private int amount = 1;
         
         private Transform _itemTooltip;
         
@@ -25,6 +25,12 @@ namespace _01.Script.Items
         private void Awake()
         {
             _outline.enabled = false;
+            itemManagerFinder.GetTarget<ItemManager>().AddItem(gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            itemManagerFinder.GetTarget<ItemManager>().RemoveItem(gameObject);
         }
 
         private void OnMouseEnter()
