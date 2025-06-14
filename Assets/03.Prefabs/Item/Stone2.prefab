@@ -100,6 +100,7 @@ MonoBehaviour:
   uiManagerFinder: {fileID: 11400000, guid: afd5e7572b2ec4e47aecd0f95d3b151b, type: 2}
   fireManagerFinder: {fileID: 11400000, guid: 9f97dbbe45b8ea4429af0867b9fcfe68, type: 2}
   resourceManagerFinder: {fileID: 11400000, guid: 074c8c17cfa6b25418c614a6cd4d047d, type: 2}
+  itemManagerFinder: {fileID: 11400000, guid: fdb44c1ede8d9254ca2f870cd0cdcbd2, type: 2}
   _outline: {fileID: 3525394081254171290}
   amount: 1
   OnItemAction:

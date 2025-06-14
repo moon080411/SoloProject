@@ -369,6 +369,7 @@ MonoBehaviour:
   nowRangeSmallPercent: 0.25
   lightSource: {fileID: 1232482055507435234}
   lightAngleRange: 12.06
+  uiManagerFinder: {fileID: 11400000, guid: afd5e7572b2ec4e47aecd0f95d3b151b, type: 2}
   bigBonFire: {fileID: 1168596801631284347}
   smallBonFire: {fileID: 2877695026317879122}
   fireGone: {fileID: 5648125223026766573}
@@ -383,10 +384,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 244dff139b71c824db0e07a86ad2cff5, type: 2}
   upgradeCosts: 030000000400000003000000
   upgradeTimeMax:
-  - 125
-  - 145.83
-  - 166.67
-  - 250
+  - 200
+  - 233.328
+  - 266.672
+  - 400
   upgradeMaxRange:
   - 7.5
   - 10
@@ -397,12 +398,10 @@ MonoBehaviour:
   - 1.5
   - 2
   - 2.5
-  upgradeFireSliderPosXWidth:
-  - {x: 0, y: 820}
-  - {x: 967.2583, y: 1171.73}
-  - {x: 2011.283, y: 2011.283}
-  - {x: 3439.14, y: 2070.596}
   fireSlider: {fileID: 0}
+  fireGoneImage: {fileID: -1874183747, guid: 44f5ae8473fc9304c8efd3199deb7558, type: 3}
+  fireSmallImage: {fileID: 170365826, guid: 44f5ae8473fc9304c8efd3199deb7558, type: 3}
+  fireBigImage: {fileID: -776471415, guid: 44f5ae8473fc9304c8efd3199deb7558, type: 3}
 --- !u!65 &5731115139272395007
 BoxCollider:
   m_ObjectHideFlags: 0
