@@ -31,6 +31,8 @@ namespace _01.Script.Manager
         [SerializeField] private TextMeshProUGUI fogText;
         [SerializeField] private TextMeshProUGUI fireText;
         [SerializeField] private TextMeshProUGUI timeText;
+        [SerializeField] private GameObject gameOverUI;
+        [SerializeField] private TextMeshProUGUI gameOverText;
         
         private Item _currentItem;
 
@@ -42,6 +44,7 @@ namespace _01.Script.Manager
             _tooltip.gameObject.SetActive(false);
             fogText.gameObject.SetActive(false);
             fireText.gameObject.SetActive(false);
+            gameOverUI.SetActive(false);
         }
         
         private void Start()
@@ -49,6 +52,7 @@ namespace _01.Script.Manager
             _inventory = playerFinder.GetTarget<Player>().ScInventory;
             
             SpawnBag(_inventory.MaxCapacity);
+            
             
             _inventory.OnInventoryPointChanged +=  SelectItemBag;
         }
@@ -120,6 +124,11 @@ namespace _01.Script.Manager
             _tooltip.gameObject.SetActive(false);
             _currentItem = null;
         }
+        
+        public void SetTimeText(string time)
+        {
+            timeText.text = time;
+        }
 
         public void SetFogText(bool b)
         {
@@ -129,6 +138,12 @@ namespace _01.Script.Manager
         public void FireTextActive(bool b)
         {
             fireText.gameObject.SetActive(b);
+        }
+
+        public void ShowGameOver(float timer)
+        {
+            gameOverUI.SetActive(true);
+            gameOverText.text = timer.ToString();
         }
     }
 }

@@ -8,17 +8,26 @@ namespace _01.Script.Players
     public class SnowEffectGenerate : MonoBehaviour , IEntityComponent
     {
         [SerializeField] private List<GameObject> _snowEffects = new List<GameObject>();
-
+        
+        private Quaternion initialRotation;
+        
         private GameObject _currentSnowEffect;
+        
 
         private void Awake()
         {
+            initialRotation = transform.localRotation;
             foreach (var snow in _snowEffects)
             {
                 snow.SetActive(false);
             }
             _snowEffects[0].SetActive(true);
             _currentSnowEffect = _snowEffects[0];
+        }
+
+        private void FixedUpdate()
+        {
+            transform.localRotation = initialRotation;
         }
 
         public void SetSnowEffect(int index)

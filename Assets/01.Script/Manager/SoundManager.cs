@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using Unity.VisualScripting;
@@ -19,7 +20,20 @@ namespace _01.Script.Manager
 
         [SerializeField , SerializedDictionary("SoundName" , "AudioClip")]
         private SerializedDictionary<string, AudioClip> clipMap = new SerializedDictionary<string, AudioClip>();
-        
+
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Debug.LogWarning("[SoundManager] Another instance already exists. Destroying this one.");
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
+
         public void PlayBGM(string sound)
         {
             if (!clipMap.TryGetValue(sound, out var clip))

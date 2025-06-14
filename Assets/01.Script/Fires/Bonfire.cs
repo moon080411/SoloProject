@@ -6,6 +6,7 @@ using _01.Script.SO.Item;
 using Plugins.ScriptFinder.RunTime.Finder;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using ColorUtility = UnityEngine.ColorUtility;
 
@@ -31,6 +32,7 @@ namespace _01.Script.Fires
         [SerializeField] private Sprite fireGoneImage;
         [SerializeField] private Sprite fireSmallImage;
         [SerializeField] private Sprite fireBigImage;
+        [SerializeField] private Image arrowImage;
         private Image _fillImage;
         private Image _handleImage;
         private RectTransform _rectTransform;
@@ -83,6 +85,7 @@ namespace _01.Script.Fires
                 fireText.gameObject.SetActive(true);
                 _currentBonFire = bigBonFire.transform;
                 _handleImage.sprite = fireBigImage;
+                arrowImage.sprite = fireBigImage;
             }
             else if (timer < bigTime && _currentBonFire != smallBonFire.transform)
             {
@@ -94,6 +97,7 @@ namespace _01.Script.Fires
                 fireText.gameObject.SetActive(true);
                 _currentBonFire = smallBonFire.transform;
                 _handleImage.sprite = fireSmallImage;
+                arrowImage.sprite = fireSmallImage;
             }
         }
         
@@ -142,6 +146,7 @@ namespace _01.Script.Fires
             fireText.gameObject.SetActive(false);
             lightSource.enabled = false;
             _handleImage.sprite = fireGoneImage;
+            arrowImage.sprite = fireGoneImage;
             _player.ScMental.SetBornFireSafe(false);
             _uiManager.FireTextActive(true);
         }

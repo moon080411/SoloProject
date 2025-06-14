@@ -1,6 +1,8 @@
 ﻿using _01.Script.Entities;
 using _01.Script.FSM;
+using _01.Script.Manager;
 using _01.Script.SO;
+using Plugins.ScriptFinder.RunTime.Finder;
 using UnityEngine;
 
 namespace _01.Script.Players
@@ -10,14 +12,22 @@ namespace _01.Script.Players
         [field : SerializeField] public PlayerInputSO PlayerInput { get; private set; }
 
         [SerializeField] private StateDataSO[] states;
+        
+        [SerializeField] private ScriptFinderSO uiManagerFinder;
 
         private EntityStateMachine _stateMachine;
+        
+        private UIManager _uiManager;
         
         public Inventory ScInventory { get; private set; }
         
         public Mental ScMental { get; private set; }
         
         public SnowEffectGenerate ScSnow { get; private set; }
+
+        private float timer;
+
+        private bool isChacking = true;
         
         
         protected override void Awake()
@@ -26,6 +36,7 @@ namespace _01.Script.Players
             ScInventory = GetCompo<Inventory>();
             ScMental = GetCompo<Mental>();
             ScSnow = GetCompo<SnowEffectGenerate>();
+            _uiManager = uiManagerFinder.GetTarget<UIManager>();
             _stateMachine = new EntityStateMachine(this, states);
             PlayerInput.OnClickEvent += Click;
         }
@@ -57,6 +68,7 @@ namespace _01.Script.Players
 
         private void OnDestroy()
         {
+            PlayerInput.OnClickEvent -= Click;
         }
 
 
@@ -68,6 +80,19 @@ namespace _01.Script.Players
         private void Update()
         {
             _stateMachine.UpdateStateMachine();
+            if (isChacking)
+            {
+                timer += Time.deltaTime;
+                _uiManager.SetTimeText(timer.ToString());
+            }
+        }
+        
+        public void GameOver()
+        {
+            isChacking = false;
+            PlayerInput.OnClickEvent -= Click;
+            Time.timeScale = 0;
+            _uiManager.ShowGameOver(timer);
         }
 
         public void ChangeState(string newStateName) => _stateMachine.ChangeState(newStateName);
