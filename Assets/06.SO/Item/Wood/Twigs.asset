@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea66f1ea5de64868b4df24d75f7b0a6a, type: 3}
   m_Name: Twigs
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Twigs
-  <ItemColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <ItemTooltip>k__BackingField: Increases the duration of fire by 1.5 seconds.
-  <TooltipColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <ItemName>k__BackingField: "\uB098\uBB47\uAC00\uC9C0"
+  <ItemColor>k__BackingField: {r: 0.6037736, g: 0.22504325, b: 0, a: 1}
+  <ItemTooltip>k__BackingField: "\uBD88\uC5D0 \uC798\uD0C0\uB294 \uB098\uBB47\uAC00\uC9C0
+    \uD070\uBD88\uC744 \uD53C\uC6B0\uAE30\uC5D0\uB294 \uC791\uB2E4."
+  <TooltipColor>k__BackingField: {r: 0.6039216, g: 0.22352941, b: 0, a: 1}
   <BackgroundColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: be7a3075fe555be4d8a4ba8f21225486, type: 3}
   <Mass>k__BackingField: 0.15

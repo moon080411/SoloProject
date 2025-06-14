@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _01.Script.Items;
 using _01.Script.Players;
@@ -5,6 +6,7 @@ using _01.Script.Pooling;
 using _01.Script.SO.Item;
 using Plugins.ScriptFinder.RunTime.Finder;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace _01.Script.Manager
 {
@@ -19,20 +21,21 @@ namespace _01.Script.Manager
         
         List<ItemBag> _items = new List<ItemBag>();
         
-        private Dictionary<Item , Transform> _itemTooltips = new Dictionary<Item, Transform>();
-        
         [SerializeField]private Transform tooltipPrefab;
         [SerializeField] private Transform itemBagPrefab;
         [SerializeField] private Sprite nullImage;
+        [SerializeField] private float tooltipYPlusPos = 20f;
         [SerializeField] private Transform itemTooltipParent;
         [SerializeField] private Transform itemBagParent;
         
-        private Pool _pool;
+        private Item _currentItem;
+
+        private Transform _tooltip;
 
         private void Awake()
         {
-            _pool = new Pool(tooltipPrefab, itemTooltipParent);
-            
+            _tooltip = Instantiate(tooltipPrefab, Vector3.zero, Quaternion.identity, itemTooltipParent);
+            _tooltip.gameObject.SetActive(false);
         }
         
         private void Start()
@@ -87,26 +90,29 @@ namespace _01.Script.Manager
             _items[where].SetImage(nullImage);
         }
 
-        
-
-        public Transform ShowItemTooltip(Item item)
+        private void FixedUpdate()
         {
-            _itemTooltips.Add(item, _pool.Pop());
-            _itemTooltips[item].GetComponent<ItemTooltip>().SetTooltip(item.ItemSo);
-            return _itemTooltips[item];
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            mousePosition.y += tooltipYPlusPos;
+            _tooltip.position = mousePosition;
+        }
+
+
+        public void ShowItemTooltip(Item item)
+        {
+            if (_currentItem != null)
+                HideItemTooltip(_currentItem);
+            _tooltip.gameObject.SetActive(true);
+            _tooltip.GetComponent<ItemTooltip>().SetTooltip(item.ItemSo);
+            _currentItem = item;
         }
         
         public void HideItemTooltip(Item item)
         {
-            if (_itemTooltips.TryGetValue(item, out var tooltip))
-            {
-                _pool.Push(tooltip);
-                _itemTooltips.Remove(item);
-            }
-            else
-            {
-                Debug.LogWarning($"Tooltip for item {item.ItemSo.ItemName} not found.");
-            }
+            if (_currentItem != item)
+                return;
+            _tooltip.gameObject.SetActive(false);
+            _currentItem = null;
         }
     }
 }

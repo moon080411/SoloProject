@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea66f1ea5de64868b4df24d75f7b0a6a, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Gold
+  <ItemName>k__BackingField: "\uAE08"
   <ItemColor>k__BackingField: {r: 0.9528302, g: 0.7909078, b: 0.15730685, a: 1}
-  <ItemTooltip>k__BackingField: 
-  <TooltipColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <ItemTooltip>k__BackingField: "\uBA4B\uC9C4 \uAE08 \uAE08\uC744 \uD1B5\uD574 \uBAA8\uB2E5\uBD88\uC744
+    \uC138\uB828\uB418\uAC8C \uAC15\uD654 \uD560 \uC218 \uC788\uB2E4."
+  <TooltipColor>k__BackingField: {r: 0.6132076, g: 0.42845368, b: 0, a: 1}
   <BackgroundColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ItemIcon>k__BackingField: {fileID: 0}
   <Mass>k__BackingField: 3

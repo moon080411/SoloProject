@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea66f1ea5de64868b4df24d75f7b0a6a, type: 3}
   m_Name: Torch
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: 
-  <ItemColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <ItemTooltip>k__BackingField: 
-  <TooltipColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <ItemName>k__BackingField: "\uD683\uBD88"
+  <ItemColor>k__BackingField: {r: 0.9056604, g: 0.5627421, b: 0, a: 1}
+  <ItemTooltip>k__BackingField: "\uC774 \uD683\uBD88\uB9CC \uC788\uB2E4\uBA74 \uC5B4\uB460\uB610\uD55C
+    \uB2A5\uD788 \uD5E4\uCCD0\uB098\uAC08 \uC218 \uC788\uC744\uAC83\uC774"
+  <TooltipColor>k__BackingField: {r: 0.8584906, g: 0.4815046, b: 0.0040494935, a: 1}
   <BackgroundColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ItemIcon>k__BackingField: {fileID: 21300000, guid: f743e39ec11e3344dad814b31fa535f8, type: 3}
   <Mass>k__BackingField: 0.15
@@ -25,7 +26,13 @@ MonoBehaviour:
     _serializedList: []
   <FloatValue>k__BackingField:
     _serializedList:
-    - Key: FIREMULTIPLY
+    - Key: FIREMULTIPLY0
       Value: 0.75
+    - Key: FIREMULTIPLY1
+      Value: 0.5
+    - Key: FIREMULTIPLY2
+      Value: 0.375
+    - Key: FIREMULTIPLY3
+      Value: 0.3
   <BoolValue>k__BackingField:
     _serializedList: []

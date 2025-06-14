@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea66f1ea5de64868b4df24d75f7b0a6a, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Stone
+  <ItemName>k__BackingField: "\uB3CC"
   <ItemColor>k__BackingField: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
-  <ItemTooltip>k__BackingField: 
-  <TooltipColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <ItemTooltip>k__BackingField: "\uBAA8\uB2E5\uBD88\uC5D0 \uAE30\uCD08\uC801\uC778
+    \uAC15\uD654\uC5D0 \uD544\uC694\uD558\uB2E4."
+  <TooltipColor>k__BackingField: {r: 0.5372549, g: 0.5372549, b: 0.5372549, a: 1}
   <BackgroundColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ItemIcon>k__BackingField: {fileID: 0}
   <Mass>k__BackingField: 1

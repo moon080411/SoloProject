@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using _01.Script.Fires;
 using _01.Script.Manager;
 using _01.Script.SO.Item;
@@ -16,21 +15,30 @@ namespace _01.Script.Items
         [SerializeField] private ScriptFinderSO uiManagerFinder;
         [SerializeField] private ScriptFinderSO fireManagerFinder;
         [SerializeField] private ScriptFinderSO resourceManagerFinder;
+        [SerializeField]private Outline _outline;
         [SerializeField] private int amount = 1;
         
         private Transform _itemTooltip;
         
         public UnityEvent OnItemAction;
 
+        private void Awake()
+        {
+            _outline.enabled = false;
+        }
+
         private void OnMouseEnter()
         {
-            //여기에 빛나게 되는 함수를 넣으면 됨
-            //uiManagerFinder.GetTarget<UIManager>().ShowItemTooltip(this);
+            if(!fireManagerFinder.GetTarget<FireManager>().CheckInFire(transform))
+                return;
+            _outline.enabled = true;
+            uiManagerFinder.GetTarget<UIManager>().ShowItemTooltip(this);
         }
 
         private void OnMouseExit()
         {
-            //uiManagerFinder.GetTarget<UIManager>().HideItemTooltip(this);
+            _outline.enabled = false;
+            uiManagerFinder.GetTarget<UIManager>().HideItemTooltip(this);
         }
 
         public void GetOutOfInventory(Transform entity)
@@ -54,6 +62,8 @@ namespace _01.Script.Items
             if(!fireManagerFinder.GetTarget<FireManager>().CheckInFire(transform))
                 return;
             OnItemAction?.Invoke();
+            _outline.enabled = false;
+            uiManagerFinder.GetTarget<UIManager>().HideItemTooltip(this);
             resourceManagerFinder.GetTarget<ResourceManager>().AddItemToInventory(this);
         }
 

@@ -1,9 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using _01.Script.Items;
 using _01.Script.Manager;
 using _01.Script.SO.Item;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using ColorUtility = UnityEngine.ColorUtility;
 
 namespace _01.Script.Fires
@@ -22,6 +24,12 @@ namespace _01.Script.Fires
         [SerializeField] private List<int> upgradeCosts;
         [SerializeField] private List<float> upgradeTimeMax;
         [SerializeField] private List<float> upgradeMaxRange;
+        [SerializeField] private List<float> upgradeTorchGiveTimeMultiply;
+        [SerializeField] private Slider fireSlider;
+        private RectTransform _rectTransform;
+        private Coroutine _fireCoroutine;
+        private Coroutine _colorCoroutine;
+        private float _torchGiveTimeMultiply = 1f;
         private Transform _currentBonFire;
         private FireManager _fireManager;
         private int _upgradeCount = 0;
@@ -34,8 +42,10 @@ namespace _01.Script.Fires
             fireGone.SetActive(false);
             maxRangeTime = upgradeTimeMax[0];
             maxRange = upgradeMaxRange[0];
+            _torchGiveTimeMultiply = upgradeTorchGiveTimeMultiply[0];
             FireText();
             _fireManager = fireManagerFinder.GetTarget<FireManager>();
+            _rectTransform = fireSlider.GetComponent<RectTransform>();
         }
 
         protected override void Update()
@@ -70,6 +80,18 @@ namespace _01.Script.Fires
                 _currentBonFire = smallBonFire.transform;
             }
         }
+        
+        private void FireSliderSet()
+        {
+            if (_currentBonFire == fireGone.transform)
+            {
+                fireSlider.value = 0;
+            }
+            else
+            {
+                fireSlider.value = timer / maxRangeTime;
+            }
+        }
 
         private void FireText()
         {
@@ -77,11 +99,11 @@ namespace _01.Script.Fires
             {
                 Color c = upgradeItems[_upgradeCount].ItemColor;
                 string hex = ColorUtility.ToHtmlStringRGBA(c);
-                fireText.text = $"next upgrade to \n<color=#{hex}>{upgradeItems[_upgradeCount].ItemName}:{upgradeCosts[_upgradeCount]}</color>";
+                fireText.text = $"다음 강화까지 남은재료 \n<color=#{hex}>{upgradeItems[_upgradeCount].ItemName}:{upgradeCosts[_upgradeCount]}</color>";
             }
             else
             {
-                fireText.text = "max upgrade";
+                fireText.text = "최대 강화?";
             } 
         }
         
@@ -112,6 +134,57 @@ namespace _01.Script.Fires
             return _currentBonFire != fireGone.transform;
         }
 
+        private void FireCoroutine()
+        {
+            CoroutineCheck(_fireCoroutine);
+            _fireCoroutine = StartCoroutine(FireUpgrade());
+        }
+
+        private void CoroutineCheck(Coroutine coroutine)
+        {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+        }
+
+        private IEnumerator FireUpgrade()
+        {
+            float time = 0;
+            float baseWidth = _rectTransform.sizeDelta.x;
+            float target = upgradeTimeMax[_upgradeCount] / upgradeTimeMax[_upgradeCount - 1] * baseWidth;
+            while (time < 1)
+            {
+                time += Time.deltaTime;
+                yield return null;
+                var delta = _rectTransform.sizeDelta;
+                delta.x = Mathf.Lerp(baseWidth, target, time);
+                _rectTransform.sizeDelta = delta;
+            }
+            _rectTransform.sizeDelta = new Vector2(target, _rectTransform.sizeDelta.y);
+        }
+        
+        private void ColorCorutine()
+        {
+            CoroutineCheck(_colorCoroutine);
+            _colorCoroutine = StartCoroutine(ColorChange());
+        }
+
+        private IEnumerator ColorChange()
+        {
+            float time = 0;
+            Color startColor = lightSource.color;
+            Color targetColor = upgradeItems[_upgradeCount].ItemColor;
+            while (time < 1f)
+            {
+                time += Time.deltaTime;
+                lightSource.color = Color.Lerp(startColor, targetColor, time);
+                yield return null;
+            }
+            lightSource.color = targetColor;
+            FireSliderSet();
+        }
+
         public void ItemAction(Item item)
         {
             if(_currentBonFire == fireGone.transform && !fireManagerFinder.GetTarget<FireManager>().CheckInFire(transform))
@@ -121,7 +194,7 @@ namespace _01.Script.Fires
                 if (timer >= torchGiveTime)
                 {
                     Torch torch = Instantiate(torchPrefab).GetComponentInChildren<Torch>();
-                    torch.SetTorch(torchGiveTime);
+                    torch.SetTorch(torchGiveTime * _torchGiveTimeMultiply);
                     timer -= torchGiveTime;
                     _player.ScInventory.AddItem(torch.GetComponent<Item>());
                     LightDown();
@@ -131,7 +204,7 @@ namespace _01.Script.Fires
                 if (timer > 0)
                 {
                     Torch torch = Instantiate(torchPrefab).GetComponentInChildren<Torch>();
-                    torch.SetTorch(timer);
+                    torch.SetTorch(timer * _torchGiveTimeMultiply);
                     timer = -1;
                     _player.ScInventory.AddItem(torch.GetComponent<Item>());
                     LightDown();
@@ -157,6 +230,9 @@ namespace _01.Script.Fires
                             _upgradeCount++;
                             maxRangeTime = upgradeTimeMax[_upgradeCount];
                             maxRange = upgradeMaxRange[_upgradeCount];
+                            _torchGiveTimeMultiply = upgradeTorchGiveTimeMultiply[_upgradeCount];
+                            ColorCorutine();
+                            FireCoroutine();
                             RangeSet();
                             LightUP();
                         }
@@ -196,18 +272,20 @@ namespace _01.Script.Fires
                 {
                     LightUP();
                 }
-                if (timer + item.GetComponent<Torch>().GetTime(item.ItemSo.FloatValue["FIREMULTIPLY"] * multiply) >= upgradeTimeMax[_upgradeCount])
+                if (timer + item.GetComponent<Torch>().GetTime(item.ItemSo.FloatValue[$"FIREMULTIPLY{_upgradeCount}"] * multiply) >= upgradeTimeMax[_upgradeCount])
                 {
                     timer = upgradeTimeMax[_upgradeCount];
                 }
                 else
                 {
-                    timer += item.GetComponent<Torch>().GetTime(item.ItemSo.FloatValue["FIREMULTIPLY"] * multiply);
+                    timer += item.GetComponent<Torch>().GetTime(item.ItemSo.FloatValue[$"FIREMULTIPLY{_upgradeCount}"] * multiply);
                 }
                 item.GetComponent<Torch>().LightOff();
                 ItemDestroy(item);
             }
         }
+
+        
 
         protected override void TimerEnd()
         {

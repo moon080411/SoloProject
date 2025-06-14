@@ -87,6 +87,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 668012578795318373, guid: 08afda74bea724bb495dd1963cd43114, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3793526720435783632}
+    - targetCorrespondingSourceObject: {fileID: 668012578795318373, guid: 08afda74bea724bb495dd1963cd43114, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -37057567372153746}
   m_SourcePrefab: {fileID: 100100000, guid: 08afda74bea724bb495dd1963cd43114, type: 3}
 --- !u!1 &4811731903131457377 stripped
 GameObject:
@@ -130,7 +133,26 @@ MonoBehaviour:
   uiManagerFinder: {fileID: 11400000, guid: afd5e7572b2ec4e47aecd0f95d3b151b, type: 2}
   fireManagerFinder: {fileID: 11400000, guid: 9f97dbbe45b8ea4429af0867b9fcfe68, type: 2}
   resourceManagerFinder: {fileID: 11400000, guid: 074c8c17cfa6b25418c614a6cd4d047d, type: 2}
+  _outline: {fileID: -37057567372153746}
   amount: 1
   OnItemAction:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-37057567372153746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4811731903131457377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 4.07
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

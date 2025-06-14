@@ -182,7 +182,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -5327031522719771981, guid: 06b726aafe3d25b4d9dd79329cd205a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sample text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 06b726aafe3d25b4d9dd79329cd205a1, type: 2}
+  m_sharedMaterial: {fileID: -5327031522719771981, guid: 06b726aafe3d25b4d9dd79329cd205a1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -368,6 +368,7 @@ MonoBehaviour:
   maxRange: 10
   nowRangeSmallPercent: 0.25
   lightSource: {fileID: 1232482055507435234}
+  lightAngleRange: 12.06
   bigBonFire: {fileID: 1168596801631284347}
   smallBonFire: {fileID: 2877695026317879122}
   fireGone: {fileID: 5648125223026766573}
@@ -391,6 +392,17 @@ MonoBehaviour:
   - 10
   - 12.5
   - 25
+  upgradeTorchGiveTimeMultiply:
+  - 1
+  - 1.5
+  - 2
+  - 2.5
+  upgradeFireSliderPosXWidth:
+  - {x: 0, y: 820}
+  - {x: 967.2583, y: 1171.73}
+  - {x: 2011.283, y: 2011.283}
+  - {x: 3439.14, y: 2070.596}
+  fireSlider: {fileID: 0}
 --- !u!65 &5731115139272395007
 BoxCollider:
   m_ObjectHideFlags: 0

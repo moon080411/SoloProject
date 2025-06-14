@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea66f1ea5de64868b4df24d75f7b0a6a, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Iron
-  <ItemColor>k__BackingField: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
-  <ItemTooltip>k__BackingField: 
-  <TooltipColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <ItemName>k__BackingField: "\uCCA0"
+  <ItemColor>k__BackingField: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  <ItemTooltip>k__BackingField: "\uD2BC\uD2BC\uD55C \uCCA0 \uC774 \uCCA0\uC744 \uD1B5\uD574
+    \uBAA8\uB2E5\uBD88\uC744 \uB354 \uB2E8\uB2E8\uD558\uAC8C \uAC15\uD654\uD560 \uC218
+    \uC788\uB2E4."
+  <TooltipColor>k__BackingField: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   <BackgroundColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ItemIcon>k__BackingField: {fileID: 0}
   <Mass>k__BackingField: 2

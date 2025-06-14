@@ -18,6 +18,7 @@ namespace _01.Script.Fires
         [SerializeField] protected float maxRange = 15f;
         [SerializeField] protected float nowRangeSmallPercent = 0.35f;
         [SerializeField] protected Light lightSource;
+        [SerializeField] protected float lightAngleRange = 10.61f;
         protected float _nowRange = 0f;
         protected float _lightRange = 0f;
         protected float _lightTime = 0f;
@@ -116,11 +117,11 @@ namespace _01.Script.Fires
             _isLightCange = true;
             while (_lightTime * 2 < 1f)
             {
-                _lightRange = Mathf.Lerp(_lightRange, _nowRange * 10.61f, _lightTime * 2f);
+                _lightRange = Mathf.Lerp(_lightRange, _nowRange * lightAngleRange, _lightTime * 2f);
                 yield return null;
                 _lightTime += Time.deltaTime;
             }
-            _lightRange = _nowRange * 10.61f;
+            _lightRange = _nowRange * lightAngleRange;
             _isLightCange = false;
         }
 
@@ -144,11 +145,11 @@ namespace _01.Script.Fires
             _isLightCange = true;
             while (_lightTime < 1f)
             {
-                _lightRange = Mathf.Lerp(0f, _nowRange * 10.61f, _lightTime);
+                _lightRange = Mathf.Lerp(0f, _nowRange * lightAngleRange, _lightTime);
                 yield return null;
                 _lightTime += Time.deltaTime;
             }
-            _lightRange = _nowRange * 10.61f;
+            _lightRange = _nowRange * lightAngleRange;
             _isLightCange = false;
         }
         
@@ -157,11 +158,11 @@ namespace _01.Script.Fires
             _isLightCange = true;
             while (_lightTime < 1f)
             {
-                _lightRange = Mathf.Lerp(_lightRange, _nowRange * 10.61f, _lightTime);
+                _lightRange = Mathf.Lerp(_lightRange, _nowRange * lightAngleRange, _lightTime);
                 yield return null;
                 _lightTime += Time.deltaTime;
             }
-            _lightRange = _nowRange * 10.61f;
+            _lightRange = _nowRange * lightAngleRange;
             _isLightCange = false;
         }
 
@@ -177,7 +178,7 @@ namespace _01.Script.Fires
 
         protected virtual void LightRangeSet()
         {
-            _lightRange = _nowRange * 10.61f;
+            _lightRange = _nowRange * lightAngleRange;
         }
 
         protected virtual void LightSet()
