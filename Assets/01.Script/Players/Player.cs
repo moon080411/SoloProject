@@ -1,5 +1,6 @@
 ﻿using _01.Script.Entities;
 using _01.Script.FSM;
+using _01.Script.Items;
 using _01.Script.Manager;
 using _01.Script.SO;
 using Plugins.ScriptFinder.RunTime.Finder;
@@ -18,12 +19,16 @@ namespace _01.Script.Players
         private EntityStateMachine _stateMachine;
         
         private UIManager _uiManager;
-        
+
+        public bool IsUseCheat { get; set; }
+
         public Inventory ScInventory { get; private set; }
         
         public Mental ScMental { get; private set; }
         
         public SnowEffectGenerate ScSnow { get; private set; }
+
+        [SerializeField] private GameObject infTorch;
 
         private float timer;
 
@@ -38,8 +43,18 @@ namespace _01.Script.Players
             ScSnow = GetCompo<SnowEffectGenerate>();
             _uiManager = uiManagerFinder.GetTarget<UIManager>();
             _stateMachine = new EntityStateMachine(this, states);
+            Time.timeScale = 1f;
             PlayerInput.OnClickEvent += Click;
+            PlayerInput.OnInfPressed += InfMake;
         }
+
+        private void InfMake()
+        {
+            IsUseCheat = true;
+            GameObject temp = Instantiate(infTorch, transform.position + transform.forward + Vector3.up, Quaternion.identity);
+            temp.GetComponent<Item>().SetRigidbody();
+        }
+
 
         private void Click(int click)
         {
@@ -69,12 +84,14 @@ namespace _01.Script.Players
         private void OnDestroy()
         {
             PlayerInput.OnClickEvent -= Click;
+            PlayerInput.OnInfPressed -= InfMake;
         }
 
 
         private void Start()
         {
             _stateMachine.ChangeState("IDLE");
+            SoundManager.Instance.PlayBGM("Game");
         }
 
         private void Update()
@@ -83,7 +100,7 @@ namespace _01.Script.Players
             if (isChacking)
             {
                 timer += Time.deltaTime;
-                _uiManager.SetTimeText(timer.ToString());
+                _uiManager.SetTimeText((int)timer);
             }
         }
         

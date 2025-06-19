@@ -10,40 +10,42 @@ namespace _01.Script
         [SerializeField] private AudioMixer myMixer;
         [SerializeField] private Slider musicSlider;
         [SerializeField] private Slider sfxSlider;
+        [SerializeField] private Slider masterSlider;
 
         private void Start()
         {
-            if (PlayerPrefs.HasKey("BGMVolume"))
-            {
-                LoadVolume();
-            }
-            else
-            {
-                SetMusicVolume();
-                SetSfxVolume();
-            }
+            LoadVolume();
+            gameObject.SetActive(false);
+        }
         
+        public void SetMasterVolume()
+        {
+            float volume = masterSlider.value;
+            myMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+            PlayerPrefs.SetFloat("Master", volume);
         }
         public void SetMusicVolume()
         {
             float volume = musicSlider.value;
-            myMixer.SetFloat("BGMVolume", Mathf.Log10(volume)*20);
-            PlayerPrefs.SetFloat("BGMVolume",volume);
+            myMixer.SetFloat("BGM", Mathf.Log10(volume)*20);
+            PlayerPrefs.SetFloat("BGM",volume);
         }
         public void SetSfxVolume()
         {
             float volume = sfxSlider.value;
-            myMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-            PlayerPrefs.SetFloat("SFXVolume", volume);
+            myMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+            PlayerPrefs.SetFloat("SFX", volume);
         }
         
         private void LoadVolume()
         {
-            musicSlider.value = PlayerPrefs.GetFloat("BGMVolume");
-            sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+            musicSlider.value = PlayerPrefs.GetFloat("BGM" , 0f);
+            sfxSlider.value = PlayerPrefs.GetFloat("SFX" , 0f);
+            masterSlider.value = PlayerPrefs.GetFloat("Master" , 0f);
 
             SetMusicVolume();
             SetSfxVolume();
+            SetMasterVolume();
         }
     }
 }

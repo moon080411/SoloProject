@@ -115,10 +115,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4695578168749253928}
     m_Modifications:
+    - target: {fileID: 157199337890212170, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 157199337890212170, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 157199337890212170, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5606235075722611035}
+    - target: {fileID: 157199337890212170, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 157199337890212170, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 157199337890212170, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _01.Script.Players.Player, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 157199337890212170, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1873894529307216718, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2982956180252513614, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: infTorch
+      value: 
+      objectReference: {fileID: 4477637249008490785, guid: 6ed6666503c3c4242bdd54d8d22479c3, type: 3}
+    - target: {fileID: 2982956180252513614, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+      propertyPath: uiManagerFinder
+      value: 
+      objectReference: {fileID: 11400000, guid: afd5e7572b2ec4e47aecd0f95d3b151b, type: 2}
     - target: {fileID: 6281839968241506354, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
       propertyPath: rotateTarget
       value: 
@@ -173,3 +209,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9185066579555813540, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
   m_PrefabInstance: {fileID: 7253275685014854677}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5606235075722611035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2982956180252513614, guid: f95c2ebbcc37f3f4497f611af08e8701, type: 3}
+  m_PrefabInstance: {fileID: 7253275685014854677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bba9567c0707374795cc21cce89dbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

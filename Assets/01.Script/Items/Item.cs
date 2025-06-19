@@ -6,6 +6,7 @@ using Plugins.ScriptFinder.RunTime.Finder;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace _01.Script.Items
 {
@@ -17,6 +18,9 @@ namespace _01.Script.Items
         [SerializeField] private ScriptFinderSO resourceManagerFinder;
         [SerializeField] private ScriptFinderSO itemManagerFinder;
         [SerializeField]private Outline _outline;
+        [SerializeField] private bool isSpawned = false;
+
+        private Quaternion _startRotation;
         
         private Transform _itemTooltip;
         
@@ -25,12 +29,20 @@ namespace _01.Script.Items
         private void Awake()
         {
             _outline.enabled = false;
-            itemManagerFinder.GetTarget<ItemManager>().AddItem(gameObject);
+            if (isSpawned)
+            {
+                _startRotation = transform.rotation;
+                itemManagerFinder.GetTarget<ItemManager>().AddItem(gameObject);
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, Random.Range(0, 360), transform.eulerAngles.y);
+            }
         }
 
         private void OnDestroy()
         {
-            itemManagerFinder.GetTarget<ItemManager>().RemoveItem(gameObject);
+            if (isSpawned)
+            {
+                itemManagerFinder.GetTarget<ItemManager>().RemoveItem(gameObject);
+            }
         }
 
         private void OnMouseEnter()
@@ -67,6 +79,10 @@ namespace _01.Script.Items
         {
             if(!fireManagerFinder.GetTarget<FireManager>().CheckInFire(transform))
                 return;
+            if (isSpawned)
+            {
+                transform.rotation = _startRotation;
+            }
             OnItemAction?.Invoke();
             _outline.enabled = false;
             uiManagerFinder.GetTarget<UIManager>().HideItemTooltip(this);

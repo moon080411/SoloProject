@@ -135,7 +135,7 @@ MonoBehaviour:
   resourceManagerFinder: {fileID: 11400000, guid: 074c8c17cfa6b25418c614a6cd4d047d, type: 2}
   itemManagerFinder: {fileID: 11400000, guid: fdb44c1ede8d9254ca2f870cd0cdcbd2, type: 2}
   _outline: {fileID: 7030074739975721576}
-  amount: 1
+  isSpawned: 1
   OnItemAction:
     m_PersistentCalls:
       m_Calls: []
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 4.07
+  outlineWidth: 5
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

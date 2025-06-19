@@ -18,7 +18,7 @@ MonoBehaviour:
     \uAC15\uD654\uC5D0 \uD544\uC694\uD558\uB2E4."
   <TooltipColor>k__BackingField: {r: 0.5372549, g: 0.5372549, b: 0.5372549, a: 1}
   <BackgroundColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <ItemIcon>k__BackingField: {fileID: 0}
+  <ItemIcon>k__BackingField: {fileID: 21300000, guid: 4580b0c8f8812f3488d6a3391c395c09, type: 3}
   <Mass>k__BackingField: 1
   <StringValue>k__BackingField:
     _serializedList: []

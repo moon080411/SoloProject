@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using _01.Script.Items;
@@ -44,6 +45,8 @@ namespace _01.Script.Fires
         private FireManager _fireManager;
         private int _upgradeCount = 0;
         private UIManager _uiManager;
+        
+        private AudioSource _audioSource;
 
         protected override void Awake()
         {
@@ -61,6 +64,11 @@ namespace _01.Script.Fires
             _rectTransform = fireSlider.GetComponent<RectTransform>();
             _fillImage = fireSlider.fillRect.GetComponent<Image>();
             _handleImage = fireSlider.handleRect.GetComponent<Image>();
+        }
+
+        private void Start()
+        {
+            _audioSource = SoundManager.Instance.PlayWithLoop("Fire", transform);
         }
 
         protected override void Update()
@@ -149,6 +157,7 @@ namespace _01.Script.Fires
             arrowImage.sprite = fireGoneImage;
             _player.ScMental.SetBornFireSafe(false);
             _uiManager.FireTextActive(true);
+            SoundManager.Instance.StopPlay(_audioSource);
         }
 
         public void Action()
@@ -183,6 +192,7 @@ namespace _01.Script.Fires
                 fireSlider.value = Mathf.Lerp(baseValue, timer / maxRangeTime, time);
             }
             fireSlider.value = timer / maxRangeTime;
+            _sliderCoroutine = null;
         }
 
         private void CoroutineCheck(Coroutine coroutine)
@@ -272,6 +282,7 @@ namespace _01.Script.Fires
                         if (upgradeCosts[_upgradeCount] <= 0)
                         {
                             Upgrade();
+                            SoundManager.Instance.Play("Forging");
                         }
 
                         FireText();
@@ -292,6 +303,7 @@ namespace _01.Script.Fires
                 {
                     timer += item.ItemSo.FloatValue["FIREPOWER"];
                 }
+                SoundManager.Instance.Play("AddFire");
                 ItemDestroy(item);
                 LightUP();
             }
@@ -305,6 +317,7 @@ namespace _01.Script.Fires
                     _player.ScMental.SetBornFireSafe(true);
                     LightOn();
                     _uiManager.FireTextActive(false);
+                    _audioSource = SoundManager.Instance.PlayWithLoop("Fire", transform);
                     multiply = 0.5f;
                 }
                 else
@@ -320,6 +333,7 @@ namespace _01.Script.Fires
                     timer += item.GetComponent<Torch>().GetTime(item.ItemSo.FloatValue[$"FIREMULTIPLY{_upgradeCount}"] * multiply);
                 }
                 item.GetComponent<Torch>().LightOff();
+                SoundManager.Instance.Play("AddFire");
                 ItemDestroy(item);
             }
         }

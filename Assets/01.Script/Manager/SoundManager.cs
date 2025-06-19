@@ -36,6 +36,10 @@ namespace _01.Script.Manager
 
         public void PlayBGM(string sound)
         {
+            if (string.IsNullOrEmpty(sound))
+            {
+                return;
+            }
             if (!clipMap.TryGetValue(sound, out var clip))
             {
                 Debug.LogWarning($"[SoundManager] No BGM clip mapped for {sound}");
@@ -70,6 +74,8 @@ namespace _01.Script.Manager
             }
 
             var newSfxSource = target != null ? target.AddComponent<AudioSource>() : gameObject.AddComponent<AudioSource>();
+            if(target != null)
+                newSfxSource.spatialBlend = 1;
 
             newSfxSource.clip = clip;
             newSfxSource.loop = true;

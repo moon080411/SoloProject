@@ -1,4 +1,5 @@
 ﻿using _01.Script.Entities;
+using _01.Script.Manager;
 using UnityEngine;
 
 namespace _01.Script.Players.States
@@ -7,6 +8,15 @@ namespace _01.Script.Players.States
     {
         public PlayerMoveState(Entity entity, int animationHash) : base(entity, animationHash)
         {
+        }
+
+        private AudioSource _audioSource;
+        
+
+        public override void Enter()
+        {
+            base.Enter();
+            _audioSource = SoundManager.Instance.PlayWithLoop("Walk");
         }
 
         public override void Update()
@@ -18,6 +28,12 @@ namespace _01.Script.Players.States
             {
                 _player.ChangeState("IDLE");
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            SoundManager.Instance.StopPlay(_audioSource);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace _01.Script.SO
         public event Action<bool> IsMoveThreshold;
         public event Action OnEscapePressed;
         public event Action<int> OnClickEvent;
+        
+        public event Action OnInfPressed;
 
         public Vector2 mousePosition;
 
@@ -51,6 +53,14 @@ namespace _01.Script.SO
             }
 
             MovementKey = context.ReadValue<Vector2>();
+        }
+        
+        public void OnInf(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                OnInfPressed?.Invoke();
+            }
         }
 
         public void OnClick(InputAction.CallbackContext context)

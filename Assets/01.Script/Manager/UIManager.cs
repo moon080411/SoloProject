@@ -125,9 +125,9 @@ namespace _01.Script.Manager
             _currentItem = null;
         }
         
-        public void SetTimeText(string time)
+        public void SetTimeText(int time)
         {
-            timeText.text = time;
+            timeText.text = time.ToString();
         }
 
         public void SetFogText(bool b)
